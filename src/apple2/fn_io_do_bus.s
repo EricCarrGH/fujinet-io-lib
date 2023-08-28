@@ -1,6 +1,5 @@
         .export _fn_io_do_bus
 
-        .import fn_io_copy_dcb
         .include "apple2.inc"
 
 ; void fn_io_do_bus()
