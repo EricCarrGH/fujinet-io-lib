@@ -1,6 +1,12 @@
 # fujinet-io-lib
 
-Build cc65 libraries for supported targets.
+Build FujiNet IO cc65 libraries for supported targets.
+
+## Header file
+
+See [fn_io.h](src/common/inc/fn_io.h)
+
+This contains the prototype definitions for all supported commands.
 
 ## Building
 
