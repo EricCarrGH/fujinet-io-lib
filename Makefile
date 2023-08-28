@@ -9,7 +9,7 @@
 
 # Space or comma separated list of cc65 supported target platforms to build for.
 # Default: c64 (lowercase!)
-TARGETS := atari apple2 c64
+TARGETS := atari
 
 # Name of the final, single-file library.
 PROGRAM := fn_io.lib

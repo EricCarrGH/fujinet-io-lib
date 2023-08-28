@@ -57,12 +57,20 @@ typedef struct {
 
 typedef struct
 {
-  unsigned short numSectors;
-  unsigned short sectorSize;
+  uint16_t numSectors;
+  uint16_t sectorSize;
   uint8_t hostSlot;
   uint8_t deviceSlot;
   char filename[224];
 } NewDisk;
+
+typedef struct
+{
+  uint8_t  command;
+  uint8_t  stats;
+  uint16_t buffer;
+  uint16_t 
+} CommandData;
 
 void fn_io_close_directory(uint8_t host_slot);
 void fn_io_copy_file(uint8_t src_slot, uint8_t dst_slot, char *copy_spec);
