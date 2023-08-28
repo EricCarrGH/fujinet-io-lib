@@ -10,7 +10,7 @@ Feature: IO library test - fn_io_get_wifi_status
       And I create and load simple application
 
     When I write memory at t_v with <sio_ret>
-     And I execute the procedure at _fn_io_get_wifi_status for no more than 65 instructions
+     And I execute the procedure at _fn_io_get_wifi_status for no more than 75 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

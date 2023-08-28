@@ -27,4 +27,4 @@
 
 .rodata
 t_io_get_wifi_enabled:
-        .byte $ea, $40, <tmp4, >tmp4, $0f, $00, $01, $00, $00, $00
+        .byte $ea, $40, <tmp4, >tmp4, $01, $00, $00, $00

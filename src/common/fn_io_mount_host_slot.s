@@ -37,4 +37,4 @@ out:
 
 .rodata
 t_io_mount_host_slot:
-        .byte $f9, $00, $00, $00, $0f, $00, $00, $00, $ff, $00
+        .byte $f9, $00, $00, $00, $00, $00, $ff, $00

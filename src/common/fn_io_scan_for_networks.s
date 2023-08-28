@@ -18,4 +18,4 @@
 
 .rodata
 t_io_scan_for_networks:
-        .byte $fd, $40, <tmp1, >tmp1, $0f, $00, $04, $00, $00, $00
+        .byte $fd, $40, <tmp1, >tmp1, $04, $00, $00, $00

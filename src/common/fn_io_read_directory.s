@@ -32,4 +32,4 @@
 
 .rodata
 t_io_read_directory:
-        .byte $f6, $40, $ff, $ff, $0f, $00, $ff, $00, $ff, $ff
+        .byte $f6, $40, $ff, $ff, $ff, $00, $ff, $ff

@@ -18,4 +18,4 @@
 
 .rodata
 t_io_set_directory_position:
-        .byte $e4, $00, $00, $00, $0f, $00, $00, $00, $ff, $ff
+        .byte $e4, $00, $00, $00, $00, $00, $ff, $ff

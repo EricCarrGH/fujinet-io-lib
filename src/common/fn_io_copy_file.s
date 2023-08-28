@@ -19,9 +19,10 @@
         mva     tmp2, IO_DCB::daux1
         mva     tmp1, IO_DCB::daux2
         mwa     ptr1, IO_DCB::dbuflo
+        mva     #$fe, IO_DCB::dtimlo
         jmp     _fn_io_do_bus
 .endproc
 
 .rodata
 t_io_copy_file:
-        .byte $d8, $80, $ff, $ff, $fe, $00, $00, $01, $ff, $ff
+        .byte $d8, $80, $ff, $ff, $00, $01, $ff, $ff

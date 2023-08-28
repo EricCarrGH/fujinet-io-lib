@@ -18,4 +18,4 @@
 
 .rodata
 t_io_close_directory:
-        .byte $f5, $00, $00, $00, $0f, $00, $00, $00, $ff, $00
+        .byte $f5, $00, $00, $00, $00, $00, $ff, $00

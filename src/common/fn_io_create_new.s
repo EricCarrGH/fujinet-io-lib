@@ -125,6 +125,7 @@ s1440:  ldx     #DiskSize::size1440
         setax   #t_io_create_new
         jsr     fn_io_copy_dcb
         mwa     ptr2, IO_DCB::dbuflo
+        mva     #$fe, IO_DCB::dtimlo
         jmp     _fn_io_do_bus
         ; implicit rts
 .endproc
@@ -138,4 +139,4 @@ t_disk_sector_sizes:
 .define NDsz .sizeof(NewDisk)
 
 t_io_create_new:
-        .byte $e7, $80, $ff, $ff, $fe, $00, <NDsz, >NDsz, $00, $00
+        .byte $e7, $80, $ff, $ff, <NDsz, >NDsz, $00, $00

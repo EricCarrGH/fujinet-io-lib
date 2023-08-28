@@ -22,4 +22,4 @@
 
 .rodata
 t_io_get_wifi_status:
-        .byte $fa, $40, <tmp1, >tmp1, $0f, $00, $01, $00, $00, $00
+        .byte $fa, $40, <tmp1, >tmp1, $01, $00, $00, $00
