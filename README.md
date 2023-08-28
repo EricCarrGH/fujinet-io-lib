@@ -26,13 +26,7 @@ $ make TARGETS=atari
 
 ## Target specific code
 
-The common source is in [src/common](src/common/) which holds the device agnostic code.
-
 Specific code should be implemented in `src/<target>` folder.
-
-### fn_data.inc
-
-This file holds device specific definitions, most notably the definition of the location of DDEVIC.
 
 ## Testing
 
