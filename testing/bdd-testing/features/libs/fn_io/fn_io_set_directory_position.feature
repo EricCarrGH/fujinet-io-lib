@@ -2,12 +2,12 @@ Feature: IO library test - fn_io_set_directory_position
 
   This tests FN-IO fn_io_set_directory_position
 
-  Scenario: execute fn_io_set_directory_position sets up DCB and calls SIOV
+  Scenario: execute fn_io_set_directory_position sets up DCB and calls BUS
     Given fn-io application test setup
       And I add common io files
       And I add common src file "fn_io_set_directory_position.s"
       And I add file for compiling "features/test-setup/test-apps/test_fn_io_set_directory_position.s"
-      And I add file for compiling "features/test-setup/stubs/sio-simple.s"
+      And I add file for compiling "features/test-setup/stubs/bus-simple.s"
       And I create and load application
       And I write memory at $80 with $ff
       And I write memory at t_pos with $20
@@ -27,5 +27,5 @@ Feature: IO library test - fn_io_set_directory_position
      And I expect to see DBUFLO equal $00
      And I expect to see DBUFHI equal $00
 
-    # check SIOV was called
+    # check BUS was called
     Then I expect to see $80 equal $01

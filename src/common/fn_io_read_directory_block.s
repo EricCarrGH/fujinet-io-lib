@@ -1,5 +1,5 @@
         .export     _fn_io_read_directory_block
-        .import     fn_io_copy_dcb, popa, _fn_io_dosiov
+        .import     fn_io_copy_dcb, popa, _fn_io_do_bus
 
         .include    "zeropage.inc"
         .include    "fn_macros.inc"
@@ -37,7 +37,7 @@
         mva     tmp3, IO_DCB::daux2     ; pages | 0xC0 | 0x20 if extended dir info requested
         mwa     ptr1, IO_DCB::dbuflo
 
-        jsr     _fn_io_dosiov
+        jsr     _fn_io_do_bus
         setax   ptr1
         rts
 

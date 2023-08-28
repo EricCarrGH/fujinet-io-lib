@@ -1,5 +1,5 @@
         .export         _fn_io_get_adapter_config
-        .import         fn_io_copy_dcb, _fn_io_dosiov
+        .import         fn_io_copy_dcb, _fn_io_do_bus
 
         .include        "zeropage.inc"
         .include        "fn_macros.inc"
@@ -16,9 +16,9 @@
         setax   #t_io_get_adapter_config
         jsr     fn_io_copy_dcb
 
-        ; set the memory address for DCB to write to and call SIOV
+        ; set the memory address for DCB to write to and call BUS
         mwa     ptr1, IO_DCB::dbuflo
-        jmp     _fn_io_dosiov
+        jmp     _fn_io_do_bus
 
 .endproc
 

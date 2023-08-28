@@ -1,5 +1,5 @@
         .export         _fn_io_get_wifi_enabled
-        .import         _fn_io_siov
+        .import         _fn_io_bus
         .import         return0, return1
 
         .include        "zeropage.inc"
@@ -10,7 +10,7 @@
 ; sets A=1 if wifi is enabled. 0 otherwise, X=0 in both cases for calling convention
 .proc _fn_io_get_wifi_enabled
         setax   #t_io_get_wifi_enabled
-        jsr     _fn_io_siov
+        jsr     _fn_io_bus
 
         ; was it set?
         lda     tmp4

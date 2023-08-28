@@ -1,9 +1,9 @@
-; stub SIOV
+; stub BUS
     .include    "fn_macros.inc"
     .include    "fn_data.inc"
 
-    .segment "SIO"
-    .org SIOV
+    .segment "BUS"
+    .org BUS
 
 stubbed_sio:
     mva #$01, $80

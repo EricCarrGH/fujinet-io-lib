@@ -6,7 +6,7 @@ Feature: IO library test - fn_io_set_ssid
     Given fn-io simple test setup
       And I add common io files
       And I add common src file "fn_io_set_ssid.s"
-      And I add file for compiling "features/test-setup/stubs/sio-simple.s"
+      And I add file for compiling "features/test-setup/stubs/bus-simple.s"
       And I create and load simple application
       And I set register A to $00
       And I set register X to $A0
@@ -26,5 +26,5 @@ Feature: IO library test - fn_io_set_ssid
      And I expect to see DBUFLO equal lo($A000)
      And I expect to see DBUFHI equal hi($A000)
 
-     # prove we called siov
+     # prove we called bus
      And I expect to see $80 equal $01

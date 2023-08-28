@@ -2,7 +2,7 @@
         .export     t_disk_num_sectors, t_disk_sector_sizes, t_io_create_new
 
         .import     popa, popax, _strncpy, pushax
-        .import     fn_io_copy_dcb, _fn_io_dosiov
+        .import     fn_io_copy_dcb, _fn_io_do_bus
 
         .include    "zeropage.inc"
         .include    "fn_macros.inc"
@@ -121,11 +121,11 @@ s1440:  ldx     #DiskSize::size1440
 ;         ldy     #DeviceSlot::mode
 ;         mva     fn_io_deviceslot_mode, {(ptr1), y}
 
-        ; finally setup DCB and call SIOV
+        ; finally setup DCB and call BUS
         setax   #t_io_create_new
         jsr     fn_io_copy_dcb
         mwa     ptr2, IO_DCB::dbuflo
-        jmp     _fn_io_dosiov
+        jmp     _fn_io_do_bus
         ; implicit rts
 .endproc
 

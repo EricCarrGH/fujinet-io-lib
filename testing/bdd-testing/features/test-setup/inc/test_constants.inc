@@ -11,4 +11,4 @@ DBYTLO  = $1008
 DBYTHI  = $1009
 DAUX1   = $100A
 DAUX2   = $100B
-SIOV    = $2000
+BUS     = $2000

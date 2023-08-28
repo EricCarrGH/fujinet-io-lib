@@ -1,5 +1,5 @@
         .export     _fn_io_read_directory
-        .import     fn_io_copy_dcb, popa, _fn_io_dosiov
+        .import     fn_io_copy_dcb, popa, _fn_io_do_bus
 
         .include    "zeropage.inc"
         .include    "fn_macros.inc"
@@ -7,7 +7,7 @@
 
 ; char *fn_io_read_directory(unsigned char maxlen, unsigned char aux2, void *buffer)
 ;
-; See https://github.com/FujiNetWIFI/fujinet-platformio/wiki/SIO-Command-%24F6-Read-Directory for aux2 value
+; See https://github.com/FujiNetWIFI/fujinet-platformio/wiki/BUS-Command-%24F6-Read-Directory for aux2 value
 .proc _fn_io_read_directory
         axinto  ptr1    ; buffer location
         popa    tmp1    ; aux2 param
@@ -24,7 +24,7 @@
         ldy     #$00
         mva     #$7f, {(ptr1), y}       ; it's the thing to do apparantly. I think this is a DIR marker
 
-        jsr     _fn_io_dosiov
+        jsr     _fn_io_do_bus
         setax   ptr1
         rts
 

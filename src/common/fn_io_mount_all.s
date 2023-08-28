@@ -1,5 +1,5 @@
         .export         _fn_io_mount_all
-        .import         _fn_io_siov
+        .import         _fn_io_bus
 
         .include        "zeropage.inc"
         .include        "fn_macros.inc"
@@ -10,7 +10,7 @@
 ; 1 = success, otherwise error
 .proc _fn_io_mount_all
         setax   #t_io_mount_all
-        jsr     _fn_io_siov
+        jsr     _fn_io_bus
 
         ldx     #$00
         lda     IO_DCB::dstats

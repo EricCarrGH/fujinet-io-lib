@@ -99,9 +99,6 @@ al 003000 .start
                     lda #>(__MAIN_START__ + __MAIN_SIZE__ + __STACKSIZE__)
                     sta sp+1
 
-                    ; tests are stubbing _malloc to make it predictable, so no need for this
-                    ; jsr     initlib
-                    
                     jsr _main
                     brk
     

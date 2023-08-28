@@ -1,5 +1,5 @@
         .export         _fn_io_get_device_filename
-        .import         fn_io_copy_dcb, _fn_io_dosiov, popa
+        .import         fn_io_copy_dcb, _fn_io_do_bus, popa
         .include        "zeropage.inc"
         .include        "fn_macros.inc"
         .include        "fn_data.inc"
@@ -13,7 +13,7 @@
 
         mva     tmp1, IO_DCB::daux1
         mwa     ptr1, IO_DCB::dbuflo
-        jmp     _fn_io_dosiov
+        jmp     _fn_io_do_bus
 
 .endproc
 

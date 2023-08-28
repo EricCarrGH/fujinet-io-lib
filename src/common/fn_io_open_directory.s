@@ -1,6 +1,6 @@
         .export     _fn_io_open_directory
 
-        .import     fn_io_copy_dcb, _fn_io_dosiov
+        .import     fn_io_copy_dcb, _fn_io_do_bus
         .import     popa, return0
 
         .include    "zeropage.inc"
@@ -20,7 +20,7 @@
         mva     tmp1, IO_DCB::daux1
         mwa     ptr1, IO_DCB::dbuflo
 
-        jsr     _fn_io_dosiov
+        jsr     _fn_io_do_bus
         jmp     return0
 
 .endproc

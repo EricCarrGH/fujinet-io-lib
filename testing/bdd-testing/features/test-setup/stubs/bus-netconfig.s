@@ -1,11 +1,11 @@
-; stub SIOV
+; stub BUS
     .include    "fn_macros.inc"
     .include    "fn_io.inc"
     .include    "fn_data.inc"
 
-  .segment "SIO"
-  .org SIOV
-  ; Emulate SIOV call by copying ssid/pass into 
+  .segment "BUS"
+  .org BUS
+  ; Emulate BUS call by copying ssid/pass into 
   mwa IO_DCB::dbuflo, $80
 
   ; copy ssid into nc

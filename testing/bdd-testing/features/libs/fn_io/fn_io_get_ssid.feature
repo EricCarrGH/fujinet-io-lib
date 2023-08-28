@@ -7,11 +7,11 @@ Feature: IO library test - fn_io_get_ssid
       And I add common io files
       And I add common src file "fn_io_get_ssid.s"
       And I add file for compiling "features/test-setup/test-apps/test_fn_io_get_ssid.s"
-      And I add file for compiling "features/test-setup/stubs/sio-netconfig.s"
+      And I add file for compiling "features/test-setup/stubs/bus-netconfig.s"
       And I create and load application
       And I write memory at t_netconfig_loc with $00
       And I write memory at t_netconfig_loc+1 with $A0
-      # And I print memory from SIOV to SIOV+192
+      # And I print memory from BUS to BUS+192
 
      When I execute the procedure at _init for no more than 550 instructions
       And I print memory from $A000 to $A000+98

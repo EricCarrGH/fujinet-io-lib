@@ -7,7 +7,7 @@ Feature: IO library test - fn_io_set_device_filename
       And I add common io files
       And I add common src file "fn_io_set_device_filename.s"
       And I add file for compiling "features/test-setup/test-apps/test_fn_io_set_device_filename.s"
-      And I add file for compiling "features/test-setup/stubs/sio-simple.s"
+      And I add file for compiling "features/test-setup/stubs/bus-simple.s"
       And I create and load application
       And I write memory at $80 with $00
       And I write memory at t_dev_slot with <device_slot>
@@ -31,7 +31,7 @@ Feature: IO library test - fn_io_set_device_filename
      And I expect to see DBUFLO equal lo($a000)
      And I expect to see DBUFHI equal hi($a000)
 
-     # verify SIOV was called
+     # verify BUS was called
      And I expect to see $80 equal 1
   Examples:
   | device_slot | host_slot  | mode | hs_x_16_plus_mode |

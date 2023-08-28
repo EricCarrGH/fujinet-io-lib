@@ -6,7 +6,7 @@ Feature: IO library test - fn_io_get_adapter_config
     Given fn-io simple test setup
       And I add common io files
       And I add common src file "fn_io_get_adapter_config.s"
-      And I add file for compiling "features/test-setup/stubs/sio-adapter-config.s"
+      And I add file for compiling "features/test-setup/stubs/bus-adapter-config.s"
       And I create and load simple application
       And I set register A to $00
       And I set register X to $A0

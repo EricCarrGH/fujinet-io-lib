@@ -6,7 +6,7 @@ Feature: IO library test - fn_io_scan_for_networks
     Given fn-io simple test setup
       And I add common io files
       And I add common src file "fn_io_scan_for_networks.s"
-      And I add file for compiling "features/test-setup/stubs/sio-dbuflo1.s"
+      And I add file for compiling "features/test-setup/stubs/bus-dbuflo1.s"
       And I create and load simple application
       And I write memory at $80 with $00
 

@@ -1,5 +1,5 @@
         .export     _fn_io_set_boot_config
-        .import     fn_io_copy_dcb, _fn_io_dosiov
+        .import     fn_io_copy_dcb, _fn_io_do_bus
 
         .include    "zeropage.inc"
         .include    "fn_macros.inc"
@@ -13,7 +13,7 @@
         jsr     fn_io_copy_dcb
 
         mva     tmp1, IO_DCB::daux1
-        jmp     _fn_io_dosiov
+        jmp     _fn_io_do_bus
 .endproc
 
 .rodata

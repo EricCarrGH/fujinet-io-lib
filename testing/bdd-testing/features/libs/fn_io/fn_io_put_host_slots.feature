@@ -7,7 +7,7 @@ Feature: IO library test - fn_io_put_host_slots
       And I add common io files
       And I add common src file "fn_io_get_host_slots.s"
       And I add common src file "fn_io_put_host_slots.s"
-      And I add file for compiling "features/test-setup/stubs/sio-simple.s"
+      And I add file for compiling "features/test-setup/stubs/bus-simple.s"
       And I create and load simple application
       And I write memory at $80 with $00
       And I set register A to $00
@@ -28,5 +28,5 @@ Feature: IO library test - fn_io_put_host_slots
      And I expect to see DBUFLO equal lo($a000)
      And I expect to see DBUFHI equal hi($a000)
 
-     # verify SIOV was called
+     # verify BUS was called
      And I expect to see $80 equal 1

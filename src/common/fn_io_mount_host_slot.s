@@ -1,5 +1,5 @@
         .export         _fn_io_mount_host_slot
-        .import         fn_io_copy_dcb, fn_io_hostslots, _fn_io_dosiov
+        .import         fn_io_copy_dcb, fn_io_hostslots, _fn_io_do_bus
         .import         popa
 
         .include        "zeropage.inc"
@@ -29,7 +29,7 @@ skip:
         setax   #t_io_mount_host_slot
         jsr     fn_io_copy_dcb
         mva     tmp1, IO_DCB::daux1
-        jmp     _fn_io_dosiov
+        jmp     _fn_io_do_bus
 
 out:
         rts

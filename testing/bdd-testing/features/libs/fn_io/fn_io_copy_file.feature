@@ -7,7 +7,7 @@ Feature: IO library test - fn_io_copy_file
       And I add common io files
       And I add common src file "fn_io_copy_file.s"
       And I add file for compiling "features/test-setup/test-apps/test_fn_io_copy_file.s"
-      And I add file for compiling "features/test-setup/stubs/sio-simple.s"
+      And I add file for compiling "features/test-setup/stubs/bus-simple.s"
       And I create and load application
       And I write memory at $80 with $ff
       And I write memory at t_src with $01
@@ -30,5 +30,5 @@ Feature: IO library test - fn_io_copy_file
      And I expect to see DBUFLO equal lo($A000)
      And I expect to see DBUFHI equal hi($A000)
 
-    # check SIOV was called
+    # check BUS was called
     Then I expect to see $80 equal $01

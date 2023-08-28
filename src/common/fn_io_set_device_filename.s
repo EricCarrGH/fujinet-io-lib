@@ -1,5 +1,5 @@
         .export         _fn_io_set_device_filename
-        .import         fn_io_copy_dcb, _fn_io_dosiov
+        .import         fn_io_copy_dcb, _fn_io_do_bus
         .import         popa
 
         .include        "zeropage.inc"
@@ -30,7 +30,7 @@
 
         mva     tmp1, IO_DCB::daux1
         mwa     ptr1, IO_DCB::dbuflo
-        jmp     _fn_io_dosiov
+        jmp     _fn_io_do_bus
 .endproc
 
 .rodata

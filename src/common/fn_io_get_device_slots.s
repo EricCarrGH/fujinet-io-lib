@@ -1,5 +1,5 @@
         .export         _fn_io_get_device_slots, t_io_get_device_slots
-        .import         fn_io_copy_dcb, _fn_io_dosiov
+        .import         fn_io_copy_dcb, _fn_io_do_bus
 
         .include        "zeropage.inc"
         .include        "fn_macros.inc"
@@ -14,7 +14,7 @@
         jsr     fn_io_copy_dcb
 
         mwa     ptr1, IO_DCB::dbuflo
-        jmp     _fn_io_dosiov
+        jmp     _fn_io_do_bus
 .endproc
 
 .rodata

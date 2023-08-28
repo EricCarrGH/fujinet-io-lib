@@ -1,5 +1,5 @@
         .export         _fn_io_get_ssid
-        .import         fn_io_copy_dcb, _fn_io_dosiov
+        .import         fn_io_copy_dcb, _fn_io_do_bus
 
         .include        "zeropage.inc"
         .include        "fn_macros.inc"
@@ -15,9 +15,9 @@
         setax   #t_io_get_ssid
         jsr     fn_io_copy_dcb
 
-        ; copy mem location to DCB, and call siov
+        ; copy mem location to DCB, and call bus
         mwa     ptr1, IO_DCB::dbuflo
-        jmp     _fn_io_dosiov
+        jmp     _fn_io_do_bus
 .endproc
 
 .rodata

@@ -7,10 +7,10 @@ Feature: IO library test - fn_io_get_scan_result
       And I add common io files
       And I add common src file "fn_io_get_scan_result.s"
       And I add file for compiling "features/test-setup/test-apps/test_fn_io_get_scan_result.s"
-      And I add file for compiling "features/test-setup/stubs/sio-ssid-info.s"
+      And I add file for compiling "features/test-setup/stubs/bus-ssid-info.s"
       And I create and load application
       And I write memory at t_network_index with 5
-      # tell SIO to write to A000
+      # tell BUS to write to A000
       And I write memory at t_ssidinfo_loc with $00
       And I write memory at t_ssidinfo_loc+1 with $A0
 

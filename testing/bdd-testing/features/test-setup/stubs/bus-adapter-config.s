@@ -1,4 +1,4 @@
-; stub SIOV
+; stub BUS
   .include    "fn_macros.inc"
   .include    "fn_io.inc"
   .include    "fn_data.inc"
@@ -14,9 +14,9 @@ L1: lda arg2
     bpl L1
 .endmacro
 
-  .segment "SIO"
-  .org SIOV
-  ; Emulate SIOV call by copying ssid/pass into 
+  .segment "BUS"
+  .org BUS
+  ; Emulate BUS call by copying ssid/pass into 
 
   ; copy test data into struct
   copy_y #11, {t_ssid,y},        {ac+AdapterConfig::ssid, y}

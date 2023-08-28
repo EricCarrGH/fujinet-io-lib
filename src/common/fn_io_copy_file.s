@@ -1,5 +1,5 @@
         .export     _fn_io_copy_file
-        .import     fn_io_copy_dcb, popa, _fn_io_dosiov
+        .import     fn_io_copy_dcb, popa, _fn_io_do_bus
         .include    "zeropage.inc"
         .include    "fn_macros.inc"
         .include    "fn_data.inc"
@@ -19,7 +19,7 @@
         mva     tmp2, IO_DCB::daux1
         mva     tmp1, IO_DCB::daux2
         mwa     ptr1, IO_DCB::dbuflo
-        jmp     _fn_io_dosiov
+        jmp     _fn_io_do_bus
 .endproc
 
 .rodata

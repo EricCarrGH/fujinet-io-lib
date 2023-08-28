@@ -1,11 +1,11 @@
-; stub SIOV
+; stub BUS
     .include    "fn_macros.inc"
     .include    "fn_io.inc"
     .include    "fn_data.inc"
     .export     t_v
 
-    .segment "SIO"
-    .org SIOV
+    .segment "BUS"
+    .org BUS
     mwa IO_DCB::dbuflo, $80
 
     ldy #0
