@@ -5,6 +5,6 @@
     .segment "BUS"
     .org BUS
 
-stubbed_sio:
+stubbed_bus:
     mva #$01, $80
     rts
