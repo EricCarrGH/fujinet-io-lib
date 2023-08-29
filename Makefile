@@ -9,7 +9,7 @@
 
 # Space or comma separated list of cc65 supported target platforms to build for.
 # Default: c64 (lowercase!)
-TARGETS := atari
+TARGETS := atari c64 apple2
 
 # Name of the final, single-file library.
 PROGRAM := fn_io.lib
@@ -215,7 +215,8 @@ DEPENDS := $(OBJECTS:.o=.d)
 LIBS += $(wildcard $(SRCDIR)/*.lib)
 LIBS += $(wildcard $(SRCDIR)/$(TARGETLIST)/*.lib)
 
-ASFLAGS += --asm-include-dir src/common/inc --asm-include-dir src/libs/inc --asm-include-dir src/$(TARGETLIST)/inc
+ASFLAGS += --asm-include-dir src/common/inc --asm-include-dir src/$(TARGETLIST)/inc
+CFLAGS += --include-dir src/common/inc --include-dir src/$(TARGETLIST)/inc
 
 .SUFFIXES:
 .PHONY: all clean fn_io.lib.$(TARGETLIST)
@@ -268,6 +269,7 @@ SRC_INC_DIRS := \
 # $(info $$SOURCES = ${SOURCES})
 # $(info $$OBJECTS = ${OBJECTS})
 # $(info $$SRC_INC_DIRS = ${SRC_INC_DIRS})
+# $(info $$ASFLAGS = ${ASFLAGS})
 # $(info $$TARGETOBJDIR = ${TARGETOBJDIR})
 
 vpath %.c $(SRC_INC_DIRS) $(SRCDIR)

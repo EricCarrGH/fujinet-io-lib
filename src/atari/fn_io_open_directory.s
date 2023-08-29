@@ -16,7 +16,7 @@
         setax   #t_io_open_directory
         jsr     _fn_io_copy_cmd_data
 
-        ; set the host_slot into DAUX1, and buffer in dbuflow
+        ; set the host_slot into DAUX1, and buffer in dbuflo
         mva     tmp1, IO_DCB::daux1
         mwa     ptr1, IO_DCB::dbuflo
 

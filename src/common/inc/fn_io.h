@@ -2,6 +2,7 @@
 #define FN_IO_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #define FILE_MAXLEN 36
 #define SSID_MAXLEN 33 /* 32 + NULL */
@@ -64,15 +65,7 @@ typedef struct
   char filename[224];
 } NewDisk;
 
-typedef struct
-{
-  uint8_t  command;
-  uint8_t  stats;
-  uint16_t buffer;
-  uint16_t 
-} CommandData;
-
-void fn_io_close_directory(uint8_t host_slot);
+void fn_io_close_directory(void);
 void fn_io_copy_file(uint8_t src_slot, uint8_t dst_slot, char *copy_spec);
 void fn_io_create_new(uint8_t selected_host_slot, uint8_t selected_device_slot, uint16_t selected_size, NewDisk *new_disk, char *dir_path);
 void fn_io_disable_device(uint8_t d);
@@ -85,7 +78,7 @@ void fn_io_get_host_slots(HostSlot *h);
 void fn_io_get_scan_result(uint8_t n, SSIDInfo *ssid_info);
 void fn_io_get_ssid(NetConfig *net_config);
 bool fn_io_get_wifi_enabled(void);
-uint8_t io_get_wifi_status(void);
+uint8_t fn_io_get_wifi_status(void);
 uint8_t fn_io_mount_all(void);
 void fn_io_mount_disk_image(uint8_t ds, uint8_t mode);
 void fn_io_mount_host_slot(uint8_t hs);
@@ -94,7 +87,7 @@ void fn_io_put_device_slots(DeviceSlot *d);
 void fn_io_put_host_slots(HostSlot *h);
 char *fn_io_read_directory(uint8_t maxlen, uint8_t aux2, char *buffer);
 void fn_io_reset(void);
-uint8_t io_scan_for_networks(void);
+uint8_t fn_io_scan_for_networks(void);
 void fn_io_set_boot_config(uint8_t toggle);
 void fn_io_set_boot_mode(uint8_t mode);
 void fn_io_set_device_filename(uint8_t mode, uint8_t host_slot, uint8_t device_slot, void *buffer);

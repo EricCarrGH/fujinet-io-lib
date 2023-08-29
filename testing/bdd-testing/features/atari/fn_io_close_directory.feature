@@ -2,16 +2,15 @@ Feature: IO library test - fn_io_close_directory
 
   This tests FN-IO fn_io_close_directory
 
-  Scenario: execute fn_io_close_directory with filter and path
-    Given fn-io application test setup
+  Scenario: execute fn_io_close_directory
+    Given fn-io simple test setup
       And I add common io files
       And I add atari src file "fn_io_close_directory.s"
       And I add file for compiling "features/atari/test-apps/test_fn_io_close_directory.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load simple application
       And I write memory at $80 with $ff
-      And I write memory at t_host_slot with $02
-     When I execute the procedure at _init for no more than 80 instructions
+     When I execute the procedure at _fn_io_close_directory for no more than 80 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70
