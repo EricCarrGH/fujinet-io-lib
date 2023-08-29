@@ -12,7 +12,7 @@
 ; void fn_io_create_new(uint8_t selected_host_slot, uint8_t selected_device_slot, uint16_t selected_size, struct NewDisk *new_disk, char *dir_path)
 .proc _fn_io_create_new
         axinto  ptr3            ; directory path src
-        popax   ptr2            ; buffer for new disk, caller responsible for memory
+        popax   ptr4            ; buffer for new disk, caller responsible for memory. IMPORTANT! ptr4 not trashed by _strncpy
         popax   ptr1            ; size (word) - one of 90, 130, ... etc. see below
         popa    tmp1            ; device_slot (byte)
         popa    tmp2            ; host_slot (byte)
@@ -56,14 +56,14 @@ s1440:  ldx     #DiskSize::size1440
         ; numSectors
         lda     t_disk_num_sectors, x
         ldy     #NewDisk::numSectors
-        sta     (ptr2), y
+        sta     (ptr4), y
 
         ; HIGH byte
         inx
 
         lda     t_disk_num_sectors, x
         ldy     #NewDisk::numSectors + 1
-        sta     (ptr2), y
+        sta     (ptr4), y
 
         dex     ; reset x to index
 
@@ -71,60 +71,46 @@ s1440:  ldx     #DiskSize::size1440
         ; sectorSize
         lda     t_disk_sector_sizes, x
         ldy     #NewDisk::sectorSize
-        sta     (ptr2), y
+        sta     (ptr4), y
 
         ; HIGH byte
         inx
 
         lda     t_disk_sector_sizes, x
         ldy     #NewDisk::sectorSize + 1
-        sta     (ptr2), y
+        sta     (ptr4), y
 
         ; ----------------------------------------------------------------------
         ; deviceSlot
         lda     tmp1
         ldy     #NewDisk::deviceSlot
-        sta     (ptr2), y
+        sta     (ptr4), y
 
         ; ----------------------------------------------------------------------
         ; hostSlot
         lda     tmp2
         ldy     #NewDisk::hostSlot
-        sta     (ptr2), y
+        sta     (ptr4), y
 
         ; ----------------------------------------------------------------------
         ; filename - need location of this for strncpy
-        ; ptr2 points to allocated area, we need to add offset to the filename
-        adw     ptr2, #NewDisk::filename
+        ; ptr4 points to new disk buffer, we need to add offset to the filename
+        adw     ptr4, #NewDisk::filename
 
         ; and copy the string there
-        pushax  ptr2            ; dst
+        pushax  ptr4            ; dst
         pushax  ptr3            ; src
-        setax   #$e0
-        jsr     _strncpy
+        setax   #$100           ; copy up to 256 bytes
+        jsr     _strncpy        ; this leaves only ptr4 intact
 
-        ; restore ptr2 to start of malloc location
-        sbw     ptr2, #NewDisk::filename
-
-;         ; THIS CODE IS FROM ORIGINAL C, but I don't think it's in the right place.
-;         ; set the mode of the specific deviceslot
-;         ; make ptr1 start at specific entry
-;         mwa     #fn_io_deviceslots, ptr1
-;         ldx     tmp1
-;         beq     skip        ; nothing to add, we're on deviceslots[0]
-
-; :       adw     ptr1, #.sizeof(DeviceSlot)
-;         dex
-;         bne     :-
-
-; skip:
-;         ldy     #DeviceSlot::mode
-;         mva     fn_io_deviceslot_mode, {(ptr1), y}
+        ; restore ptr4 to start of buffer
+        sbw     ptr4, #NewDisk::filename
+        mwa     ptr4, ptr3      ; copy memory location down to ptr3, as ptr4 is lost shortly
 
         ; finally setup DCB and call BUS
         setax   #t_io_create_new
-        jsr     _fn_io_copy_cmd_data
-        mwa     ptr2, IO_DCB::dbuflo
+        jsr     _fn_io_copy_cmd_data     ; trashes ptr4
+        mwa     ptr3, IO_DCB::dbuflo
         mva     #$fe, IO_DCB::dtimlo
         jmp     _fn_io_do_bus
         ; implicit rts

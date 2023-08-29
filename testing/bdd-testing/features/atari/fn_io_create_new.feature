@@ -18,6 +18,8 @@ Feature: IO library test - fn_io_create_new
       And I write memory at t_newdisk+1 with hi($c000)
       And I write string "<path>" as ascii to memory address $a000
      When I execute the procedure at _init for no more than 1700 instructions
+      And I hex dump memory between $1000 and $1010
+      And I hex dump memory between $a000 and $a010
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70
@@ -25,8 +27,8 @@ Feature: IO library test - fn_io_create_new
      And I expect to see DTIMLO equal $fe
      And I expect to see DCOMND equal $e7
      And I expect to see DSTATS equal $80
-     And I expect to see DBYTLO equal $e6
-     And I expect to see DBYTHI equal $00
+     And I expect to see DBYTLO equal $06
+     And I expect to see DBYTHI equal $01
      And I expect to see DAUX1 equal $00
      And I expect to see DAUX2 equal $00
      And I expect to see DBUFLO equal lo($c000)

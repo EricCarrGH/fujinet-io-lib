@@ -62,7 +62,7 @@ typedef struct
   uint16_t sectorSize;
   uint8_t hostSlot;
   uint8_t deviceSlot;
-  char filename[224];
+  char filename[256];
 } NewDisk;
 
 void fn_io_close_directory(void);

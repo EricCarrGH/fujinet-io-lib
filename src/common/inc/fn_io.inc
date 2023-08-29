@@ -35,7 +35,7 @@
     sectorSize  .res 2
     hostSlot    .res 1
     deviceSlot  .res 1
-    filename    .res $e0    ; same size as fn_dir_path
+    filename    .res $100
 .endstruct
 
 ; these are word offsets, save ourselves a LSR and pre-double them
