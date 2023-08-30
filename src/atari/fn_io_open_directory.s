@@ -7,10 +7,10 @@
         .include    "fn_macros.inc"
         .include    "fn_data.inc"
 
-; int _fn_io_open_directory(uint8_t host_slot, void *buffer)
+; int _fn_io_open_directory(uint8_t host_slot, char *path_filter)
 ;
 .proc _fn_io_open_directory
-        axinto  ptr1            ; buffer save location
+        axinto  ptr1            ; save location of path+filter buffer
         popa    tmp1            ; save the host_slot
 
         setax   #t_io_open_directory

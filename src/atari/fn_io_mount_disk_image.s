@@ -5,7 +5,7 @@
         .include        "fn_macros.inc"
         .include        "fn_data.inc"
 
-; void fn_io_mount_disk_image(uint8_t slot, uint8_t mode)
+; void fn_io_mount_disk_image(uint8_t device_slot, uint8_t mode)
 .proc _fn_io_mount_disk_image
         sta     tmp1    ; save mode
         popa    tmp2    ; save slot

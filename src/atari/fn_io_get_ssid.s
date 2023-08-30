@@ -6,7 +6,7 @@
         .include        "fn_io.inc"
         .include        "fn_data.inc"
 
-; void _fn_io_get_ssid(void *fn_io_net_config)
+; void _fn_io_get_ssid(NetConfig *net_config)
 ;
 ; read ssid to fn_io_net_config
 .proc _fn_io_get_ssid

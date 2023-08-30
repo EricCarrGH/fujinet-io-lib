@@ -4,7 +4,7 @@
         .include        "zeropage.inc"
         .include        "fn_macros.inc"
 
-; int _fn_io_get_wifi_status()
+; bool fn_io_get_wifi_status()
 ;
 ; Return values are:
 ;  1: No SSID available

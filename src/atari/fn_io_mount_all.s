@@ -5,7 +5,7 @@
         .include        "fn_macros.inc"
         .include        "fn_data.inc"
 
-; uint8_t _fn_io_mount_all(void)
+; uint8_t fn_io_mount_all(void)
 ;
 ; 1 = success, otherwise error
 .proc _fn_io_mount_all

@@ -7,7 +7,7 @@
         .include        "fn_io.inc"
         .include        "fn_data.inc"
 
-; void _fn_io_get_scan_result(uint8_t network_index, void *SSIDInfo)
+; void _fn_io_get_scan_result(uint8_t network_index, SSIDInfor *ssid_info)
 ;
 ; caller must supply memory location for ssidinfo to go
 .proc _fn_io_get_scan_result

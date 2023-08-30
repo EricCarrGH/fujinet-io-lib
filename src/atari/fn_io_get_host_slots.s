@@ -6,7 +6,7 @@
         .include        "fn_io.inc"
         .include        "fn_data.inc"
 
-; void _fn_io_get_host_slots(struct HostSlot *)
+; void _fn_io_get_host_slots(struct HostSlot *host_slots)
 .proc _fn_io_get_host_slots
         axinto  ptr1
         setax   #t_io_get_host_slots
