@@ -7,15 +7,15 @@
 #define FILE_MAXLEN 36
 #define SSID_MAXLEN 33 /* 32 + NULL */
 
-enum DiskSize {
-    size90      = 0,
-    size130     = 2,
-    size180     = 4,
-    size360     = 6,
-    size720     = 8,
-    size1440    = 10,
-    sizeCustom  = 12
-};
+// enum DiskSize {
+//     size90,
+//     size130,
+//     size180,
+//     size360,
+//     size720,
+//     size1440,
+//     sizeCustom
+// };
 
 enum WifiStatus {
     no_ssid_available   = 1,
@@ -67,7 +67,7 @@ typedef struct
 
 void fn_io_close_directory(void);
 void fn_io_copy_file(uint8_t src_slot, uint8_t dst_slot, char *copy_spec);
-void fn_io_create_new(uint8_t selected_host_slot, uint8_t selected_device_slot, uint16_t selected_size, NewDisk *new_disk, char *dir_path);
+void fn_io_create_new(uint8_t selected_host_slot, uint8_t selected_device_slot, uint16_t selected_size, uint16_t cust_num, uint16_t cust_size, NewDisk *new_disk, char *dir_path);
 void fn_io_disable_device(uint8_t d);
 void fn_io_enable_device(uint8_t d);
 void fn_io_get_adapter_config(AdapterConfig *ac);
