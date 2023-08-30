@@ -67,7 +67,7 @@ typedef struct
 
 void fn_io_close_directory(void);
 void fn_io_copy_file(uint8_t src_slot, uint8_t dst_slot, char *copy_spec);
-void fn_io_create_new(uint8_t selected_host_slot, uint8_t selected_device_slot, uint16_t selected_size, uint16_t cust_num, uint16_t cust_size, NewDisk *new_disk, char *dir_path);
+void fn_io_create_new(NewDisk *new_disk);
 void fn_io_disable_device(uint8_t d);
 void fn_io_enable_device(uint8_t d);
 void fn_io_get_adapter_config(AdapterConfig *ac);
