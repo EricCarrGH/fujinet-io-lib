@@ -17,7 +17,7 @@ Feature: IO library test - fn_io_set_boot_mode
     Then I expect to see DDEVIC equal $70
      And I expect to see DUNIT equal $01
      And I expect to see DTIMLO equal $0f
-     And I expect to see DCOMND equal $d9
+     And I expect to see DCOMND equal $d6
      And I expect to see DSTATS equal $00
      And I expect to see DBYTLO equal $00
      And I expect to see DBYTHI equal $00
