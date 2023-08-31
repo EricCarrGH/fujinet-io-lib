@@ -4,7 +4,7 @@ Feature: IO library test - fn_io_get_device_slots
 
   Scenario: execute _fn_io_get_device_slots
     Given atari-fn-io simple test setup
-      And I add common io files
+      And I add common atari-io files
       And I add atari src file "fn_io_get_device_slots.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
       And I create and load simple application

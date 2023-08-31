@@ -10,6 +10,7 @@ Feature: IO library test - fn_io_error
      When I write memory at DSTATS with <init>
       And I execute the procedure at _fn_io_error for no more than 10 instructions
      Then I expect register A equal <A>
+     Then I expect register X equal <X>
 
     Examples:
       | init |  A   |  X   |
