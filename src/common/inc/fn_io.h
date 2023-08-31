@@ -7,16 +7,6 @@
 #define FILE_MAXLEN 36
 #define SSID_MAXLEN 33 /* 32 + NULL */
 
-// enum DiskSize {
-//     size90,
-//     size130,
-//     size180,
-//     size360,
-//     size720,
-//     size1440,
-//     sizeCustom
-// };
-
 enum WifiStatus {
     no_ssid_available   = 1,
     connected           = 3,
