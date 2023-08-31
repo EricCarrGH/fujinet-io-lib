@@ -4,7 +4,7 @@ Feature: MACRO tests - sbw
   The instruction count is exact to ensure the more efficient methods are used
 
   Scenario: sbw subtracts words
-    Given fn-io simple test setup
+    Given atari-fn-io simple test setup
       And I add file for compiling "features/macro_tests/test_sbw.s"
       And I create and load simple application
 

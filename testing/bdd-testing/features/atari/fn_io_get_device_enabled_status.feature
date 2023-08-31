@@ -3,7 +3,7 @@ Feature: IO library test - fn_io_get_device_enabled_status
   This tests FN-IO fn_io_get_device_enabled_status
 
   Scenario: execute _fn_io_get_device_enabled_status should set A
-    Given fn-io simple test setup
+    Given atari-fn-io simple test setup
       And I add atari src file "fn_io_get_device_enabled_status.s"
       And I create and load simple application
       And I set register A to $aa

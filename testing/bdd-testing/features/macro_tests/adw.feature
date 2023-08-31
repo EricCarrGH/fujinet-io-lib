@@ -4,7 +4,7 @@ Feature: MACRO tests - adw
   The instruction count is exact to ensure the more efficient methods are used
 
   Scenario: adw adds words
-    Given fn-io simple test setup
+    Given atari-fn-io simple test setup
       And I add file for compiling "features/macro_tests/test_adw.s"
       And I create and load simple application
 

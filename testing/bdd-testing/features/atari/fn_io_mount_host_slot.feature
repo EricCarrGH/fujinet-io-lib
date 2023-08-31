@@ -3,7 +3,7 @@ Feature: IO library test - fn_io_mount_host_slot
   This tests FN-IO fn_io_mount_host_slot
 
   Scenario Outline: execute _fn_io_mount_host_slot
-    Given fn-io application test setup
+    Given atari-fn-io application test setup
       And I add common io files
       And I add atari src file "fn_io_mount_host_slot.s"
       And I add file for compiling "features/atari/test-apps/test_fn_io_mount_host_slot.s"
@@ -38,7 +38,7 @@ Feature: IO library test - fn_io_mount_host_slot
     | 2    |
 
   Scenario Outline: execute _fn_io_mount_host_slot does not run BUS if first byte is 0
-    Given fn-io application test setup
+    Given atari-fn-io application test setup
       And I add common io files
       And I add atari src file "fn_io_mount_host_slot.s"
       And I add file for compiling "features/atari/test-apps/test_fn_io_mount_host_slot.s"

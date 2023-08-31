@@ -3,7 +3,7 @@ Feature: IO library test - fn_io_get_ssid
   This tests FN-IO fn_io_get_ssid
 
   Scenario: execute _fn_io_get_ssid
-    Given fn-io application test setup
+    Given atari-fn-io application test setup
       And I add common io files
       And I add atari src file "fn_io_get_ssid.s"
       And I add file for compiling "features/atari/test-apps/test_fn_io_get_ssid.s"

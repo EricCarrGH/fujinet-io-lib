@@ -3,7 +3,7 @@ Feature: MACRO tests - mva
   This tests mva macro.
 
   Scenario: mva moves single bytes via the a register to targets
-    Given fn-io simple test setup
+    Given atari-fn-io simple test setup
       And I add file for compiling "features/macro_tests/test_mva.s"
       And I create and load simple application
 

@@ -3,7 +3,7 @@ Feature: IO library test - fn_io_scan_for_networks
   This tests FN-IO fn_io_scan_for_networks
 
   Scenario Outline: execute _fn_io_scan_for_networks
-    Given fn-io simple test setup
+    Given atari-fn-io simple test setup
       And I add common io files
       And I add atari src file "fn_io_scan_for_networks.s"
       And I add file for compiling "features/atari/stubs/bus-dbuflo1.s"

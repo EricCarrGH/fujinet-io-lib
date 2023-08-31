@@ -3,7 +3,7 @@ Feature: IO library test - fn_io_close_directory
   This tests FN-IO fn_io_close_directory
 
   Scenario: execute fn_io_close_directory
-    Given fn-io simple test setup
+    Given atari-fn-io simple test setup
       And I add common io files
       And I add atari src file "fn_io_close_directory.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
