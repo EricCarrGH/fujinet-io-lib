@@ -5,7 +5,7 @@
         .include    "fn_macros.inc"
         .include    "fn_data.inc"
 
-; char *fn_io_read_directory(unsigned char maxlen, unsigned char aux2, void *buffer)
+; char *fn_io_read_directory(unsigned char maxlen, unsigned char aux2, char *buffer)
 ;
 ; See https://github.com/FujiNetWIFI/fujinet-platformio/wiki/BUS-Command-%24F6-Read-Directory for aux2 value
 .proc _fn_io_read_directory

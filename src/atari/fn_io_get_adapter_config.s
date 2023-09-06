@@ -1,4 +1,5 @@
         .export         _fn_io_get_adapter_config
+        .export         t_io_get_adapter_config
         .import         _fn_io_copy_cmd_data, _fn_io_do_bus
 
         .include        "zeropage.inc"
@@ -8,7 +9,6 @@
 
 ; void fn_io_get_adapter_config(void *adapter_config)
 ;
-; caller needs to supply the location to write the config
 .proc _fn_io_get_adapter_config
         ; store the memory location of the adapter config
         axinto  ptr1            ; adapter config location

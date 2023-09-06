@@ -16,7 +16,7 @@ L1: lda arg2
 
   .segment "BUS"
   .org BUS
-  ; Emulate BUS call by copying ssid/pass into 
+  ; Emulate BUS call by copying ssid/pass
 
   ; copy test data into struct
   copy_y #11, {t_ssid,y},        {ac+AdapterConfig::ssid, y}
