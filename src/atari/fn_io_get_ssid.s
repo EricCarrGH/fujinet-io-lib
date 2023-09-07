@@ -24,4 +24,4 @@
 .define NCsz .sizeof(NetConfig)
 
 t_io_get_ssid:
-        .byte $fe, $40, $ff, $ff, <NCsz, >NCsz, $00, $00
+        .byte $fe, $40, <NCsz, >NCsz, $00, $00

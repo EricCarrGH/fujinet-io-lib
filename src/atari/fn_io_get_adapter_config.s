@@ -26,4 +26,4 @@
 .define ACsz .sizeof(AdapterConfig)
 
 t_io_get_adapter_config:
-        .byte $e8, $40, $ff, $ff, <ACsz, >ACsz, $00, $00
+        .byte $e8, $40, <ACsz, >ACsz, $00, $00

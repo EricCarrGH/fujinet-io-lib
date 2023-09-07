@@ -22,4 +22,4 @@
 .define DS8zH .hibyte(.sizeof(DeviceSlot)*8)
 
 t_io_get_device_slots:
-        .byte $f2, $40, $ff, $ff, DS8zL, DS8zH, $00, $00
+        .byte $f2, $40, DS8zL, DS8zH, $00, $00

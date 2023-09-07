@@ -21,4 +21,4 @@
 .define HS8zH .hibyte(.sizeof(HostSlot)*8)
 
 t_io_put_host_slots:
-        .byte $f3, $80, $ff, $ff, HS8zL, HS8zH, $00, $00
+        .byte $f3, $80, HS8zL, HS8zH, $00, $00

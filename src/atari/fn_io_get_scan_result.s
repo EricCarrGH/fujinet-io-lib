@@ -26,4 +26,4 @@
 .define SIsz .sizeof(SSIDInfo)
 
 t_io_get_scan_result:
-        .byte $fc, $40, $ff, $ff, <SIsz, >SIsz, $ff, $00
+        .byte $fc, $40, <SIsz, >SIsz, $ff, $00

@@ -26,4 +26,4 @@
 .define NDsz .sizeof(NewDisk)
 
 t_io_create_new:
-        .byte $e7, $80, $ff, $ff, <NDsz, >NDsz, $00, $00
+        .byte $e7, $80, <NDsz, >NDsz, $00, $00

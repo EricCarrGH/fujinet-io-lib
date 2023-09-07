@@ -25,4 +25,4 @@
 
 .rodata
 t_io_copy_file:
-        .byte $d8, $80, $ff, $ff, $00, $01, $ff, $ff
+        .byte $d8, $80, $00, $01, $ff, $ff

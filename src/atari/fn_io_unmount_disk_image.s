@@ -18,4 +18,4 @@
 
 .rodata
 t_io_unmount_disk_image:
-        .byte $e9, $00, $00, $00, $00, $00, $ff, $00
+        .byte $e9, $00, $00, $00, $ff, $00

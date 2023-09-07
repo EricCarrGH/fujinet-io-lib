@@ -19,5 +19,5 @@
 
 .rodata
 t_io_get_device_filename:
-        .byte $da, $40, $ff, $ff, $00, $01, $ff, $00
+        .byte $da, $40, $00, $01, $ff, $00
 

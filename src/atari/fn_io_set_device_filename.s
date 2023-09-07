@@ -35,4 +35,4 @@
 
 .rodata
 t_io_set_device_filename:
-        .byte $e2, $80, $ff, $ff, $00, $01, $ff, $00
+        .byte $e2, $80, $00, $01, $ff, $00

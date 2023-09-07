@@ -15,20 +15,24 @@
         mva     #$70, IO_DCB::ddevic
         mva     #$01, IO_DCB::dunit
 
+        ; these 2 are always set by the command, no use having them in the table
+        mva     #$00, IO_DCB::dbuflo
+        sta     IO_DCB::dbufhi
+
+        ; almost all devices use $0f
+        mva     #$0f, IO_DCB::dtimlo
+
         ; copy bytes of table into DCB
-        ldy     #7      ; 8 bytes to copy
+        ldy     #5      ; 6 bytes to copy
 l1:
         ldx     dcb_offsets, y
         mva     {(ptr4), y}, {IO_DCB::ddevic, x}
         dey
         bpl     l1
 
-        ; almost all devices use $0f
-        mva     #$0f, IO_DCB::dtimlo
-
         rts
 .endproc
 
 .rodata
 ; which DCB entries to write to, indexed from DDEVIC
-dcb_offsets: .byte 2, 3, 4, 5, 8, 9, 10, 11
+dcb_offsets: .byte 2, 3, 8, 9, 10, 11

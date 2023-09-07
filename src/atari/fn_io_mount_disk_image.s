@@ -21,4 +21,4 @@
 
 .rodata
 t_io_mount_disk_image:
-        .byte $f8, $00, $00, $00, $00, $00, $ff, $ff
+        .byte $f8, $00, $00, $00, $ff, $ff

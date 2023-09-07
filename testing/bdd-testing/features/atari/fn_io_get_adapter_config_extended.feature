@@ -13,7 +13,7 @@ Feature: IO library test - fn_io_get_adapter_config
       And I set register X to $A0
       And I write memory at $80 with $00
 
-     When I execute the procedure at _fn_io_get_adapter_config_extended for no more than 5000 instructions
+     When I execute the procedure at _fn_io_get_adapter_config_extended for no more than 1900 instructions
       And I print ascii from $A000 to $A000+244
 
     # check the DCB values were set correctly
