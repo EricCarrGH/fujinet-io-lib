@@ -1,25 +1,32 @@
         .export     _fn_io_copy_file
-        .import     _fn_io_copy_cmd_data, popa, _fn_io_do_bus
-        .include    "zeropage.inc"
+        .import     fn_io_copy_cmd_data, popa, _fn_io_do_bus
+        .include    "fn_zp.inc"
         .include    "fn_macros.inc"
         .include    "fn_data.inc"
  
 ; void fn_io_copy_file(uint8_t src_slot, uint8_t dst_slot, char *copy_spec)
+;
+; slots are 0 based from caller, but FN needs them 1 based
+; uses tmp7-10
 .proc _fn_io_copy_file
-        axinto  ptr1    ; copyspec write location
-        popa    tmp1    ; dst_slot
-        popa    tmp2    ; src_slot
+        axinto  tmp7    ; copyspec write location
 
         setax   #t_io_copy_file
-        jsr     _fn_io_copy_cmd_data
+        jsr     fn_io_copy_cmd_data
 
         ;  fujinet tracks 1-8, we do 0-7, so need to increment both values
-        inc     tmp1
-        inc     tmp2
-        mva     tmp2, IO_DCB::daux1
-        mva     tmp1, IO_DCB::daux2
-        mwa     ptr1, IO_DCB::dbuflo
-        mva     #$fe, IO_DCB::dtimlo
+        jsr     popa            ; dst slot -> daux2
+        clc
+        adc     #$01
+        sta     IO_DCB::daux2
+
+        jsr     popa            ; src slot -> daux1
+        clc
+        adc     #$01
+        sta     IO_DCB::daux1
+
+        mwa     tmp7,  IO_DCB::dbuflo
+        mva     #$fe,  IO_DCB::dtimlo
         jmp     _fn_io_do_bus
 .endproc
 

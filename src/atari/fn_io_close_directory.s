@@ -1,6 +1,5 @@
         .export     _fn_io_close_directory
 
-        .include    "zeropage.inc"
         .include    "fn_macros.inc"
         .import     _fn_io_bus
 

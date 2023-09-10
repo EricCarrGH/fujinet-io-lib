@@ -12,7 +12,7 @@ Feature: IO library test - fn_io_scan_for_networks
 
      When I set register A to $aa
       And I write memory at t_v with <networks>
-      And I execute the procedure at _fn_io_scan_for_networks for no more than 85 instructions
+      And I execute the procedure at _fn_io_scan_for_networks for no more than 65 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70
@@ -24,11 +24,12 @@ Feature: IO library test - fn_io_scan_for_networks
      And I expect to see DBYTHI equal $00
      And I expect to see DAUX1 equal $00
      And I expect to see DAUX2 equal $00
-     # using tmp4, which in cc65 is ZP address $95
-     And I expect to see DBUFLO equal lo($95)
-     And I expect to see DBUFHI equal hi($95)
+     # using tmp9, which in cc65 is ZP address $88
+     And I expect to see DBUFLO equal lo($88)
+     And I expect to see DBUFHI equal hi($88)
 
      And I expect register A equal <networks>
+     And I expect register X equal 0
 
     Examples:
     | networks |

@@ -5,8 +5,7 @@
 
 ; bool fn_io_error()
 ;
-; device specific check for any io error
-; returns A=0 for no error, 1 for any error
+; returns 0 for no error, 1 for any error
 .proc _fn_io_error
         lda     IO_DCB::dstats
         and     #$80

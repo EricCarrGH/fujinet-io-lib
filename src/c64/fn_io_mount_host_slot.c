@@ -4,10 +4,8 @@
 #include "fn_io.h"
 #include "fn_data.h"
 
-void fn_io_mount_host_slot(uint8_t hs, HostSlot *host_slots)
+void fn_io_mount_host_slot(uint8_t hs)
 {
-  if (host_slots[hs][0] == 0x00) return;
-
   memset(response, 0, sizeof(response));
 
   response[0] = FUJICMD_MOUNT_HOST;

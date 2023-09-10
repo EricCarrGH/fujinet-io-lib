@@ -9,7 +9,7 @@ Feature: IO library test - fn_io_close_directory
       And I add file for compiling "features/atari/stubs/bus-simple.s"
       And I create and load simple application
       And I write memory at $80 with $ff
-     When I execute the procedure at _fn_io_close_directory for no more than 80 instructions
+     When I execute the procedure at _fn_io_close_directory for no more than 60 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

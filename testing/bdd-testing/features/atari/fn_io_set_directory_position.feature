@@ -12,7 +12,7 @@ Feature: IO library test - fn_io_set_directory_position
       And I write memory at $80 with $ff
       And I write memory at t_pos with $20
       And I write memory at t_pos+1 with $00
-     When I execute the procedure at _init for no more than 100 instructions
+     When I execute the procedure at _init for no more than 75 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

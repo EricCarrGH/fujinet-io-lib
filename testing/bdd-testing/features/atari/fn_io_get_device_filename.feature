@@ -15,7 +15,7 @@ Feature: IO library test - fn_io_get_device_filename
       And I write memory at t_buffer with $00
       And I write memory at t_buffer+1 with $A0
 
-     When I execute the procedure at _init for no more than 100 instructions
+     When I execute the procedure at _init for no more than 90 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

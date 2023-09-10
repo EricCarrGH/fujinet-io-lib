@@ -1,7 +1,7 @@
         .export         _fn_io_get_wifi_status
-        .import         _fn_io_copy_cmd_data, _fn_io_do_bus
+        .import         fn_io_copy_cmd_data, _fn_io_do_bus
 
-        .include        "zeropage.inc"
+        .include        "fn_zp.inc"
         .include        "fn_macros.inc"
         .include        "fn_data.inc"
 
@@ -14,12 +14,12 @@
 ;  5: Connection lost
 .proc _fn_io_get_wifi_status
         setax   #t_io_get_wifi_status
-        jsr     _fn_io_copy_cmd_data
-        mwa     #tmp4, IO_DCB::dbuflo
+        jsr     fn_io_copy_cmd_data
+        mwa     #tmp9, IO_DCB::dbuflo
         jsr     _fn_io_do_bus
 
         ldx     #$00
-        lda     tmp4
+        lda     tmp9
         rts
 .endproc
 

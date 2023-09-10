@@ -1,7 +1,7 @@
         .export     _fn_io_read_directory
-        .import     _fn_io_copy_cmd_data, popa, _fn_io_do_bus
+        .import     fn_io_copy_cmd_data, popa, _fn_io_do_bus
 
-        .include    "zeropage.inc"
+        .include    "fn_zp.inc"
         .include    "fn_macros.inc"
         .include    "fn_data.inc"
 
@@ -9,23 +9,24 @@
 ;
 ; See https://github.com/FujiNetWIFI/fujinet-platformio/wiki/BUS-Command-%24F6-Read-Directory for aux2 value
 .proc _fn_io_read_directory
-        axinto  ptr1    ; buffer location
-        popa    tmp1    ; aux2 param
-        popa    tmp2    ; maxlen
+        axinto  tmp7                    ; buffer location
 
         setax   #t_io_read_directory
-        jsr     _fn_io_copy_cmd_data
+        jsr     fn_io_copy_cmd_data
 
-        mva     tmp1, IO_DCB::daux2
-        mva     tmp2, IO_DCB::dbytlo
-        mva     tmp2, IO_DCB::daux1
-        mwa     ptr1, IO_DCB::dbuflo
+        jsr     popa                    ; aux2 param
+        sta     IO_DCB::daux2
 
+        jsr     popa                    ; maxlen param
+        sta     IO_DCB::dbytlo
+        sta     IO_DCB::daux1
+
+        mwa     tmp7, IO_DCB::dbuflo
         ldy     #$00
-        mva     #$7f, {(ptr1), y}       ; it's the thing to do apparantly. I think this is a DIR marker
+        mva     #$7f, {(tmp7), y}       ; it's the thing to do apparantly. I think this is a DIR marker
 
         jsr     _fn_io_do_bus
-        setax   ptr1
+        setax   tmp7
         rts
 
 .endproc

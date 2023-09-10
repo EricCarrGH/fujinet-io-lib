@@ -11,7 +11,7 @@ Feature: IO library test - fn_io_set_boot_mode
       And I create and load application
       And I write memory at $80 with $ff
       And I write memory at t_mode with $0b
-     When I execute the procedure at _init for no more than 75 instructions
+     When I execute the procedure at _init for no more than 70 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

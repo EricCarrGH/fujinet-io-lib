@@ -12,7 +12,7 @@ Feature: IO library test - fn_io_set_ssid
       And I set register X to $A0
       And I write memory at $80 with $00
 
-     When I execute the procedure at _fn_io_set_ssid for no more than 75 instructions
+     When I execute the procedure at _fn_io_set_ssid for no more than 60 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

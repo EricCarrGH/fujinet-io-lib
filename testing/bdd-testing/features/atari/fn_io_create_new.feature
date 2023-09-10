@@ -12,7 +12,7 @@ Feature: IO library test - fn_io_create_new
       And I write memory at $80 with $ff
       And I write memory at t_newdisk with lo($c000)
       And I write memory at t_newdisk+1 with hi($c000)
-     When I execute the procedure at _init for no more than 1700 instructions
+     When I execute the procedure at _init for no more than 80 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

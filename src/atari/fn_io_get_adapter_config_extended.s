@@ -1,7 +1,7 @@
         .export         _fn_io_get_adapter_config_extended
-        .import         _fn_io_copy_cmd_data, _fn_io_do_bus
+        .import         fn_io_copy_cmd_data, _fn_io_do_bus
 
-        .include        "zeropage.inc"
+        .include        "fn_zp.inc"
         .include        "fn_macros.inc"
         .include        "fn_data.inc"
         .include        "fn_io.inc"
@@ -10,13 +10,13 @@
 ;
 .proc _fn_io_get_adapter_config_extended
         ; store the memory location of the adapter config
-        axinto  ptr1
+        axinto  tmp7
 
         setax   #t_io_get_adapter_config_ext
-        jsr     _fn_io_copy_cmd_data
+        jsr     fn_io_copy_cmd_data
 
         ; set the memory address, new size, and aux1 for DCB
-        mwa     ptr1, IO_DCB::dbuflo
+        mwa     tmp7, IO_DCB::dbuflo
         jmp     _fn_io_do_bus
 
 .endproc

@@ -1,8 +1,8 @@
         .export     _fn_io_create_new
 
-        .import     _fn_io_copy_cmd_data, _fn_io_do_bus
+        .import     fn_io_copy_cmd_data, _fn_io_do_bus
 
-        .include    "zeropage.inc"
+        .include    "fn_zp.inc"
         .include    "fn_macros.inc"
         .include    "fn_io.inc"
         .include    "fn_data.inc"
@@ -11,11 +11,11 @@
 ;
 ; creates a new disk from given structure
 .proc _fn_io_create_new
-        axinto  ptr1                    ; buffer to NewDisk
+        axinto  tmp7                    ; buffer to NewDisk
 
         setax   #t_io_create_new
-        jsr     _fn_io_copy_cmd_data
-        mwa     ptr1, IO_DCB::dbuflo
+        jsr     fn_io_copy_cmd_data
+        mwa     tmp7, IO_DCB::dbuflo
         mva     #$fe, IO_DCB::dtimlo    ; high for ATX. could check the filename end and reduce this if it isn't atx
         jmp     _fn_io_do_bus
         ; implicit rts

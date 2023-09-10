@@ -13,7 +13,7 @@ Feature: IO library test - fn_io_get_ssid
       And I write memory at t_netconfig_loc+1 with $A0
       # And I print memory from BUS to BUS+192
 
-     When I execute the procedure at _init for no more than 550 instructions
+     When I execute the procedure at _init for no more than 540 instructions
       And I print memory from $A000 to $A000+98
 
     # check the DCB values were set correctly

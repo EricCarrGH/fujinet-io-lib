@@ -13,7 +13,7 @@ Feature: IO library test - fn_io_get_device_slots
       And I set register X to $a0
 
      # set the slot_offset
-     When I execute the procedure at _fn_io_get_device_slots for no more than 70 instructions
+     When I execute the procedure at _fn_io_get_device_slots for no more than 60 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

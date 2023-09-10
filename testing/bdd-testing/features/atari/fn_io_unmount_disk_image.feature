@@ -11,7 +11,7 @@ Feature: IO library test - fn_io_unmount_disk_image
       And I create and load application
       And I write memory at $80 with $ff
       And I write memory at t_slot with $04
-     When I execute the procedure at _init for no more than 100 instructions
+     When I execute the procedure at _init for no more than 70 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

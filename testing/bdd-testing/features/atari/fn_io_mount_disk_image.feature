@@ -12,7 +12,7 @@ Feature: IO library test - fn_io_mount_disk_image
       And I write memory at $80 with $ff
       And I write memory at t_mode with $01
       And I write memory at t_slot with $05
-     When I execute the procedure at _init for no more than 100 instructions
+     When I execute the procedure at _init for no more than 85 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

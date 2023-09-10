@@ -11,8 +11,7 @@ Feature: IO library test - fn_io_mount_host_slot
       And I create and load application
       And I write memory at $80 with $00
       And I write memory at t_slot with <slot>
-      And I write memory at t_hostslots+32*<slot> with 1
-     When I execute the procedure at _init for no more than 110 instructions
+     When I execute the procedure at _init for no more than 70 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70
@@ -30,27 +29,6 @@ Feature: IO library test - fn_io_mount_host_slot
 
      # verify BUS was called
      And I expect to see $80 equal 1
-
-    Examples:
-    | slot |
-    | 0    |
-    | 1    |
-    | 2    |
-
-  Scenario Outline: execute _fn_io_mount_host_slot does not run BUS if first byte is 0
-    Given atari-fn-io application test setup
-      And I add common atari-io files
-      And I add atari src file "fn_io_mount_host_slot.s"
-      And I add file for compiling "features/atari/test-apps/test_fn_io_mount_host_slot.s"
-      And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
-      And I write memory at $80 with $ff
-      And I write memory at t_slot with <slot>
-      And I write memory at t_hostslots+32*<slot> with 0
-     When I execute the procedure at _init for no more than 60 instructions
-
-     # verify BUS was NOT called
-     And I expect to see $80 equal $ff
 
     Examples:
     | slot |

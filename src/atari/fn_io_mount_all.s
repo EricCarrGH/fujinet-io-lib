@@ -1,7 +1,7 @@
         .export         _fn_io_mount_all
         .import         _fn_io_bus
 
-        .include        "zeropage.inc"
+        .include        "fn_zp.inc"
         .include        "fn_macros.inc"
         .include        "fn_data.inc"
 

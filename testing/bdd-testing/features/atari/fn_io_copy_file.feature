@@ -14,7 +14,7 @@ Feature: IO library test - fn_io_copy_file
       And I write memory at t_dst with $02
       And I write memory at t_spec with $00
       And I write memory at t_spec+1 with $A0
-     When I execute the procedure at _init for no more than 120 instructions
+     When I execute the procedure at _init for no more than 110 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

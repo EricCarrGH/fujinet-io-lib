@@ -1,8 +1,8 @@
         .export         _fn_io_get_wifi_enabled
-        .import         _fn_io_copy_cmd_data, _fn_io_do_bus
+        .import         fn_io_copy_cmd_data, _fn_io_do_bus
         .import         return0, return1
 
-        .include        "zeropage.inc"
+        .include        "fn_zp.inc"
         .include        "fn_macros.inc"
         .include        "fn_data.inc"
 
@@ -11,12 +11,12 @@
 ; sets A=1 if wifi is enabled. 0 otherwise, X=0 in both cases for calling convention
 .proc _fn_io_get_wifi_enabled
         setax   #t_io_get_wifi_enabled
-        jsr     _fn_io_copy_cmd_data
-        mwa     #tmp4, IO_DCB::dbuflo
+        jsr     fn_io_copy_cmd_data
+        mwa     #tmp9, IO_DCB::dbuflo
         jsr     _fn_io_do_bus
 
         ; was it set?
-        lda     tmp4
+        lda     tmp9
         cmp     #$01
         bne     :+
 

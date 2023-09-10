@@ -1,15 +1,17 @@
-        .export         _fn_io_copy_cmd_data
+        .export         fn_io_copy_cmd_data
 
-        .include        "zeropage.inc"
+        .include        "fn_zp.inc"
         .include        "fn_macros.inc"
         .include        "fn_data.inc"
 
+; INTERNAL COPY ROUTINE
 ; void fn_io_copy_cmd_data(void *cmd_table)
 ;
 ; Sets DCB data from given table address
-; Trashes ptr4 as only ZP location
-.proc _fn_io_copy_cmd_data
-        axinto  ptr4    ; the table of dcb bytes to insert
+; Trashes tmp9/10 as only ZP location
+.proc fn_io_copy_cmd_data
+        ; the table of dcb bytes to insert
+        axinto  tmp9
 
         ; first 2 bytes always $70, $01, so we can do those manually. saves table space, and loops
         mva     #$70, IO_DCB::ddevic
@@ -26,7 +28,7 @@
         ldy     #5      ; 6 bytes to copy
 l1:
         ldx     dcb_offsets, y
-        mva     {(ptr4), y}, {IO_DCB::ddevic, x}
+        mva     {(tmp9), y}, {IO_DCB::ddevic, x}
         dey
         bpl     l1
 
@@ -35,4 +37,5 @@ l1:
 
 .rodata
 ; which DCB entries to write to, indexed from DDEVIC
+; DCOMND, DSTATS, DBYTLO, DBYTHI, DAUX1, DAUX2
 dcb_offsets: .byte 2, 3, 8, 9, 10, 11

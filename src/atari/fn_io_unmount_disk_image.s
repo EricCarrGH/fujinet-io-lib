@@ -1,18 +1,18 @@
         .export     _fn_io_unmount_disk_image
-        .import     _fn_io_copy_cmd_data, _fn_io_do_bus
+        .import     fn_io_copy_cmd_data, _fn_io_do_bus
 
-        .include    "zeropage.inc"
+        .include    "fn_zp.inc"
         .include    "fn_macros.inc"
         .include    "fn_data.inc"
 
 ; void _fn_io_unmount_disk_image(uint8_t device_slot)
 .proc _fn_io_unmount_disk_image
-        sta     tmp1    ; save device slot
+        sta     tmp8    ; save device slot
 
         setax   #t_io_unmount_disk_image
-        jsr     _fn_io_copy_cmd_data
+        jsr     fn_io_copy_cmd_data
 
-        mva     tmp1, IO_DCB::daux1
+        mva     tmp8, IO_DCB::daux1
         jmp     _fn_io_do_bus
 .endproc
 

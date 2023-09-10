@@ -14,7 +14,7 @@ Feature: IO library test - fn_io_get_scan_result
       And I write memory at t_ssidinfo_loc with $00
       And I write memory at t_ssidinfo_loc+1 with $A0
 
-     When I execute the procedure at _init for no more than 500 instructions
+     When I execute the procedure at _init for no more than 270 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

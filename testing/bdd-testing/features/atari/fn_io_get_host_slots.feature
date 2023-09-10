@@ -12,7 +12,7 @@ Feature: IO library test - fn_io_get_host_slots
       And I set register A to $00
       And I set register X to $a0
 
-     When I execute the procedure at _fn_io_get_host_slots for no more than 75 instructions
+     When I execute the procedure at _fn_io_get_host_slots for no more than 60 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

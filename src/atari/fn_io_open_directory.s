@@ -1,27 +1,28 @@
         .export     _fn_io_open_directory
 
-        .import     _fn_io_copy_cmd_data, _fn_io_do_bus
+        .import     _fn_io_error
+        .import     fn_io_copy_cmd_data, _fn_io_do_bus
         .import     popa, return0
 
-        .include    "zeropage.inc"
+        .include    "fn_zp.inc"
         .include    "fn_macros.inc"
         .include    "fn_data.inc"
 
 ; int _fn_io_open_directory(uint8_t host_slot, char *path_filter)
 ;
+; returns the error status, 0 for no error, 1 for error
 .proc _fn_io_open_directory
-        axinto  ptr1            ; save location of path+filter buffer
-        popa    tmp1            ; save the host_slot
+        axinto  tmp7            ; save location of path+filter buffer
 
         setax   #t_io_open_directory
-        jsr     _fn_io_copy_cmd_data
+        jsr     fn_io_copy_cmd_data
 
-        ; set the host_slot into DAUX1, and buffer in dbuflo
-        mva     tmp1, IO_DCB::daux1
-        mwa     ptr1, IO_DCB::dbuflo
+        jsr     popa            ; host slot
+        sta     IO_DCB::daux1
+        mwa     tmp7, IO_DCB::dbuflo
 
         jsr     _fn_io_do_bus
-        jmp     return0
+        jmp     _fn_io_error
 
 .endproc
 

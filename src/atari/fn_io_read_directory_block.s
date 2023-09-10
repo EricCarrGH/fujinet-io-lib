@@ -1,44 +1,45 @@
         .export     _fn_io_read_directory_block
-        .import     _fn_io_copy_cmd_data, popa, _fn_io_do_bus
+        .import     fn_io_copy_cmd_data, popa, _fn_io_do_bus
 
-        .include    "zeropage.inc"
+        .include    "fn_zp.inc"
         .include    "fn_macros.inc"
         .include    "fn_data.inc"
 
 ; void *fn_io_read_directory_block(uint8_t maxlen, uint8_t pages, uint8_t extended_mode, void *buffer)
 ;
 ; pages is number of 256 blocks to request
+; trashes tmp7-tmp10
 .proc _fn_io_read_directory_block
-        axinto  ptr1    ; buffer location
-        popa    tmp4    ; extended mode, 1 = on, 0 = off
+        axinto  tmp7    ; 7/8 = buffer location
+
+        ; setup DCB basic data
+        setax   #t_io_read_directory_block
+        jsr     fn_io_copy_cmd_data
+        mwa     tmp7, IO_DCB::dbuflo
+
+        popa    tmp10   ; extended mode, 1 = on, 0 = off
         
-        ; PAGES in tmp1
-        popa    tmp1    ; pages
+        jsr     popa    ; pages
+        sta     IO_DCB::dbythi    ; pages to expect back 
+
         sec
         sbc     #$01    ; force into 0-7 range (from 1-8 from caller) to fit into 3 bits
         ora     #$C0    ; force bits 7&8 to mark this as block mode
-        sta     tmp3
 
-        ; tmp3 = (PAGES | 0xC0) + if extended ? 0x20 : 0
-        ldx     tmp4
+        ; A = (PAGES | 0xC0) + if extended ? 0x20 : 0
+        ldx     tmp10
         beq     :+      ; not extended
 
         ; Add extended mode flag
         ora     #$20    ; set the extended mode flag        
-        sta     tmp3
 
-:       popa    tmp2    ; maxlen
+:       sta     IO_DCB::daux2   ; pages | 0xC0 | 0x20 if extended dir info requested
 
-        setax   #t_io_read_directory_block
-        jsr     _fn_io_copy_cmd_data
-
-        mva     tmp1, IO_DCB::dbythi    ; pages to expect back 
-        mva     tmp2, IO_DCB::daux1     ; maxlen
-        mva     tmp3, IO_DCB::daux2     ; pages | 0xC0 | 0x20 if extended dir info requested
-        mwa     ptr1, IO_DCB::dbuflo
+        jsr     popa            ; maxlen
+        sta     IO_DCB::daux1   ; save in aux1
 
         jsr     _fn_io_do_bus
-        setax   ptr1
+        setax   tmp7
         rts
 
 .endproc
