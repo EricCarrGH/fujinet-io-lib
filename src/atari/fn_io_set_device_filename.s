@@ -7,7 +7,7 @@
         .include        "fn_data.inc"
 
 
-; void _fn_io_set_device_filename(uint8_t mode, uint8_t host_slot, uint8_t device_slot, char *buffer)
+; void _fn_io_set_device_filename(uint8_t mode, uint8_t hs, uint8_t ds, char *buffer)
 .proc _fn_io_set_device_filename
         axinto  tmp7    ; buffer
 

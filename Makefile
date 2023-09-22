@@ -218,8 +218,13 @@ LIBS += $(wildcard $(SRCDIR)/$(TARGETLIST)/*.lib)
 ASFLAGS += --asm-include-dir src/common/inc --asm-include-dir src/$(TARGETLIST)/inc
 CFLAGS += --include-dir src/common/inc --include-dir src/$(TARGETLIST)/inc
 
+CHANGELOG = Changelog.md
+
+VERSION_FILE = version.txt
+VERSION_STRING := $(file < $(VERSION_FILE))
+
 .SUFFIXES:
-.PHONY: all clean fn_io.lib.$(TARGETLIST)
+.PHONY: all clean fn_io.lib.$(TARGETLIST) dist
 
 all: fn_io.lib.$(TARGETLIST)
 
@@ -292,7 +297,7 @@ $(OBJDIR)/common/%.o: %.s | $(OBJDIR)
 	@$(call MKDIR,$(dir $@))
 	$(CC) -t $(TARGETLIST) -c --create-dep $(@:.o=.d) $(ASFLAGS) -o $@ $<
 
-$(BUILD_DIR)/$(PROGRAM): $(OBJECTS)  | $(BUILD_DIR)
+$(BUILD_DIR)/$(PROGRAM): $(OBJECTS) | $(BUILD_DIR)
 	ar65 a $@ $(OBJECTS)
 
 $(PROGRAM): $(BUILD_DIR)/$(PROGRAM) | $(BUILD_DIR)
@@ -303,10 +308,19 @@ clean:
 	$(call RMFILES,$(REMOVES))
 	$(call RMFILES,$(BUILD_DIR)/fn_io.lib.$(TARGETLIST))
 
+dist: $(PROGRAM)
+	$(call MKDIR,dist/)
+	$(call RMFILES,dist/fn_io_$(TARGETLIST)_*.lib)
+	cp build/$(PROGRAM) dist/fn_io_$(TARGETLIST)_$(VERSION_STRING).lib
+	cp $(CHANGELOG) dist/ 
+	cd dist && zip fn_io_$(TARGETLIST)_$(VERSION_STRING).zip $(CHANGELOG) fn_io_$(TARGETLIST)_$(VERSION_STRING).lib
+	$(call RMFILES,dist/fn_io_$(TARGETLIST)_$(VERSION_STRING).lib)
+	$(call RMFILES,dist/$(CHANGELOG))
+
 else # $(words $(TARGETLIST)),1
 
 all:
-	$(foreach t,$(TARGETLIST),$(MAKE) TARGETS=$t clean all$(NEWLINE))
+	$(foreach t,$(TARGETLIST),$(MAKE) TARGETS=$t clean all dist$(NEWLINE))
 
 endif # $(words $(TARGETLIST)),1
 

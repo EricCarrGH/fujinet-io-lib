@@ -1,15 +1,15 @@
-        .export     _fn_io_unmount_disk_image
+        .export     _fn_io_unmount_host_slot
         .import     fn_io_copy_cmd_data, _fn_io_do_bus
 
         .include    "fn_zp.inc"
         .include    "fn_macros.inc"
         .include    "fn_data.inc"
 
-; void _fn_io_unmount_disk_image(uint8_t ds)
-.proc _fn_io_unmount_disk_image
-        sta     tmp8    ; save device slot
+; void _fn_io_unmount_host_slot(uint8_t hs)
+.proc _fn_io_unmount_host_slot
+        sta     tmp8    ; save host slot
 
-        setax   #t_io_unmount_disk_image
+        setax   #t_io_unmount_host_slot
         jsr     fn_io_copy_cmd_data
 
         mva     tmp8, IO_DCB::daux1
@@ -17,5 +17,5 @@
 .endproc
 
 .rodata
-t_io_unmount_disk_image:
-        .byte $e9, $00, $00, $00, $ff, $00
+t_io_unmount_host_slot:
+        .byte $e6, $00, $00, $00, $ff, $00

@@ -6,7 +6,7 @@
         .include        "fn_io.inc"
         .include        "fn_data.inc"
 
-; void _fn_io_put_host_slots(HostSlot *hs)
+; void _fn_io_put_host_slots(HostSlot *h)
 .proc _fn_io_put_host_slots
         axinto  tmp7
         setax   #t_io_put_host_slots

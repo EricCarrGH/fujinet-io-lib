@@ -3,7 +3,6 @@
         .include        "fn_macros.inc"
 
 .proc _main
-        ; args:  slot, mode
         pusha   t_slot
         lda     t_mode
 
