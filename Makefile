@@ -223,6 +223,8 @@ CHANGELOG = Changelog.md
 VERSION_FILE = version.txt
 VERSION_STRING := $(file < $(VERSION_FILE))
 
+FN_IO_HEADER = src/common/inc/fn_io.h
+
 .SUFFIXES:
 .PHONY: all clean fn_io.lib.$(TARGETLIST) dist
 
@@ -312,8 +314,9 @@ dist: $(PROGRAM)
 	$(call MKDIR,dist/)
 	$(call RMFILES,dist/fn_io_$(TARGETLIST)_*.lib)
 	cp build/$(PROGRAM) dist/fn_io_$(TARGETLIST)_$(VERSION_STRING).lib
+	cp $(FN_IO_HEADER) dist/
 	cp $(CHANGELOG) dist/ 
-	cd dist && zip fn_io_$(TARGETLIST)_$(VERSION_STRING).zip $(CHANGELOG) fn_io_$(TARGETLIST)_$(VERSION_STRING).lib
+	cd dist && zip fn_io_$(TARGETLIST)_$(VERSION_STRING).zip $(CHANGELOG) fn_io_$(TARGETLIST)_$(VERSION_STRING).lib *.h
 	$(call RMFILES,dist/fn_io_$(TARGETLIST)_$(VERSION_STRING).lib)
 	$(call RMFILES,dist/$(CHANGELOG))
 
