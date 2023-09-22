@@ -5,7 +5,7 @@
         .include        "fn_macros.inc"
         .include        "fn_data.inc"
 
-; bool fn_io_get_wifi_status()
+; int fn_io_get_wifi_status()
 ;
 ; Return values are:
 ;  1: No SSID available
