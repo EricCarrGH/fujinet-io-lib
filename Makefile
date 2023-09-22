@@ -319,6 +319,7 @@ dist: $(PROGRAM)
 	cd dist && zip fn_io_$(TARGETLIST)_$(VERSION_STRING).zip $(CHANGELOG) fn_io_$(TARGETLIST)_$(VERSION_STRING).lib *.h
 	$(call RMFILES,dist/fn_io_$(TARGETLIST)_$(VERSION_STRING).lib)
 	$(call RMFILES,dist/$(CHANGELOG))
+	$(call RMFILES,dist/*.h)
 
 else # $(words $(TARGETLIST)),1
 
