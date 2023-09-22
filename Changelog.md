@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+- All missing io functions supported by fujinet
+- Stub functions for apple2 and c64 for missing functions
+- Add fn_io.inc to zip archive, required for asm users
+
 ## [1.0.0] - 2023-09-22
 
 ### Added

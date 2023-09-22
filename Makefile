@@ -224,6 +224,7 @@ VERSION_FILE = version.txt
 VERSION_STRING := $(file < $(VERSION_FILE))
 
 FN_IO_HEADER = src/common/inc/fn_io.h
+FN_IO_INC = src/common/inc/fn_io.inc
 
 .SUFFIXES:
 .PHONY: all clean fn_io.lib.$(TARGETLIST) dist
@@ -315,11 +316,13 @@ dist: $(PROGRAM)
 	$(call RMFILES,dist/fn_io_$(TARGETLIST)_*.lib)
 	cp build/$(PROGRAM) dist/fn_io_$(TARGETLIST)_$(VERSION_STRING).lib
 	cp $(FN_IO_HEADER) dist/
+	cp $(FN_IO_INC) dist/
 	cp $(CHANGELOG) dist/ 
-	cd dist && zip fn_io_$(TARGETLIST)_$(VERSION_STRING).zip $(CHANGELOG) fn_io_$(TARGETLIST)_$(VERSION_STRING).lib *.h
+	cd dist && zip fn_io_$(TARGETLIST)_$(VERSION_STRING).zip $(CHANGELOG) fn_io_$(TARGETLIST)_$(VERSION_STRING).lib *.h *.inc
 	$(call RMFILES,dist/fn_io_$(TARGETLIST)_$(VERSION_STRING).lib)
 	$(call RMFILES,dist/$(CHANGELOG))
 	$(call RMFILES,dist/*.h)
+	$(call RMFILES,dist/*.inc)
 
 else # $(words $(TARGETLIST)),1
 

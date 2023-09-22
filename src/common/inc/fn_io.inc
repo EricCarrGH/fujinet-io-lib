@@ -62,3 +62,35 @@
     connect_failed      = 4
     connection_lost     = 5
 .endenum
+
+.struct AppKeyOpen
+    creator     .res 2
+    app         .res 1
+    key         .res 1
+    mode        .res 1
+    reserved    .res 1
+.endstruct
+
+.struct AppKeyRead
+    length      .res 2
+    values      .res 64
+.endstruct
+
+.struct AppKeyWrite
+    value       .res 64
+.endstruct
+
+.struct AppKeyDataBlock
+    data        .res 66     ; this is the size of the largest of Open/Read/Write
+.endstruct
+
+.struct FNStatus
+    value       .res 4
+.endstruct
+
+.enum HashType
+    MD5
+    SHA1
+    SHA256
+    SHA512
+.endenum
