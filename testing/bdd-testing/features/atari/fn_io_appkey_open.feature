@@ -18,7 +18,7 @@ Feature: IO library test - fn_io_appkey_open
     Then I expect to see DDEVIC equal $70
      And I expect to see DUNIT equal $01
      And I expect to see DCOMND equal $dc
-     And I expect to see DSTATS equal $40
+     And I expect to see DSTATS equal $80
      And I expect to see DBUFLO equal lo($a000)
      And I expect to see DBUFHI equal hi($a000)
      And I expect to see DTIMLO equal $0f

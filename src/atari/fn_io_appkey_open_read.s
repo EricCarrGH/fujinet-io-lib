@@ -11,7 +11,7 @@
         .include        "fn_data.inc"
         .include        "fn_io.inc"
 
-; void fn_io_appkey_open(AppKeyOpen *buffer);
+; uint8_t fn_io_appkey_open(AppKeyOpen *buffer);
 ;
 _fn_io_appkey_open:
         axinto  tmp7
@@ -26,7 +26,7 @@ ak_common:
         jmp     _fn_io_error
 
 
-; void fn_io_appkey_read(AppKeyRead *buffer);
+; uint8_t fn_io_appkey_read(AppKeyRead *buffer);
 ;
 _fn_io_appkey_read:
         axinto  tmp7                    ; buffer location
@@ -40,7 +40,7 @@ _fn_io_appkey_read:
 .define AKRsz .sizeof(AppKeyRead)
 
 t_fn_io_open_appkey:
-        .byte $dc, $40, AKOsz, 0, 0, 0
+        .byte $dc, $80, AKOsz, 0, 0, 0
 
 t_fn_io_read_appkey:
         .byte $dd, $40, AKRsz, 0, 0, 0

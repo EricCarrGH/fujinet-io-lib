@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [1.1.1] - 2023-09-23
+
+### Added
+
+- Add return types to appkey functions
+
+### Fixed
+
+- Fix dstat in fn_io_appkey_open
+
 ## [1.1.0] - 2023-09-23
 
 - All missing io functions supported by fujinet
@@ -19,9 +29,9 @@ Complete list of new functions:
 - void fn_io_set_hsio_index(bool save, uint8_t index);
 - void fn_io_set_host_prefix(uint8_t hs, char *prefix);
 - void fn_io_status(FNStatus *status);
-- void fn_io_appkey_open(AppKeyOpen *buffer);
-- void fn_io_appkey_read(AppKeyRead *buffer);
-- void fn_io_appkey_write(uint16_t count, AppKeyWrite *buffer);
+- uint8_t fn_io_appkey_open(AppKeyOpen *buffer);
+- uint8_t fn_io_appkey_read(AppKeyRead *buffer);
+- uint8_t fn_io_appkey_write(uint16_t count, AppKeyWrite *buffer);
 - uint8_t fn_io_base64_decode_compute();
 - uint8_t fn_io_base64_decode_input(char *s, uint16_t len);
 - uint8_t fn_io_base64_decode_length(unsigned long *len);

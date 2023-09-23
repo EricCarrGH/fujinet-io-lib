@@ -10,7 +10,7 @@
         .include        "fn_data.inc"
         .include        "fn_io.inc"
 
-; void fn_io_appkey_write(uint16_t count, AppKeyWrite *buffer);
+; uint8_t fn_io_appkey_write(uint16_t count, AppKeyWrite *buffer);
 ;
 .proc _fn_io_appkey_write
         axinto  tmp7                    ; save buffer address
