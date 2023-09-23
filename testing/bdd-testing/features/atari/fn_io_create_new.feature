@@ -6,12 +6,12 @@ Feature: IO library test - fn_io_create_new
     Given atari-fn-io application test setup
       And I add common atari-io files
       And I add atari src file "fn_io_create_new.s"
-      And I add file for compiling "features/atari/test-apps/test_fn_io_create_new.s"
+      And I add file for compiling "features/atari/test-apps/test_void_w.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
       And I create and load application
       And I write memory at $80 with $ff
-      And I write memory at t_newdisk with lo($c000)
-      And I write memory at t_newdisk+1 with hi($c000)
+      And I write word at t_w1 with hex c000
+      And I write word at t_fn with address _fn_io_create_new
      When I execute the procedure at _init for no more than 80 instructions
 
     # check the DCB values were set correctly

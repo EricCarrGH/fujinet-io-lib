@@ -6,11 +6,11 @@ Feature: IO library test - fn_io_get_ssid
     Given atari-fn-io application test setup
       And I add common atari-io files
       And I add atari src file "fn_io_get_ssid.s"
-      And I add file for compiling "features/atari/test-apps/test_fn_io_get_ssid.s"
+      And I add file for compiling "features/atari/test-apps/test_void_w.s"
       And I add file for compiling "features/atari/stubs/bus-netconfig.s"
       And I create and load application
-      And I write memory at t_netconfig_loc with $00
-      And I write memory at t_netconfig_loc+1 with $A0
+      And I write word at t_w1 with hex a000
+      And I write word at t_fn with address _fn_io_get_ssid
       # And I print memory from BUS to BUS+192
 
      When I execute the procedure at _init for no more than 540 instructions

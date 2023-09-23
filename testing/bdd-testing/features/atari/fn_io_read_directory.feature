@@ -6,14 +6,15 @@ Feature: IO library test - fn_io_read_directory
     Given atari-fn-io application test setup
       And I add common atari-io files
       And I add atari src file "fn_io_read_directory.s"
-      And I add file for compiling "features/atari/test-apps/test_fn_io_read_directory.s"
+      And I add file for compiling "features/atari/test-apps/test_void_bbw.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
       And I create and load application
       And I write memory at $80 with $ff
-      And I write memory at t_maxlen with $20
-      And I write memory at t_aux2 with $80
-      And I write memory at t_buffer with $00
-      And I write memory at t_buffer+1 with $a0
+      # maxlen, aux2, buffer
+      And I write memory at t_b1 with $20
+      And I write memory at t_b2 with $80
+      And I write word at t_w3 with hex a000
+      And I write word at t_fn with address _fn_io_read_directory
      When I execute the procedure at _init for no more than 110 instructions
 
     # check the DCB values were set correctly

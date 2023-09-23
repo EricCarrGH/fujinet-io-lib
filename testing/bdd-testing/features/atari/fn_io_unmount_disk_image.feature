@@ -6,11 +6,12 @@ Feature: IO library test - fn_io_unmount_disk_image
     Given atari-fn-io application test setup
       And I add common atari-io files
       And I add atari src file "fn_io_unmount_disk_image.s"
-      And I add file for compiling "features/atari/test-apps/test_fn_io_unmount_disk_image.s"
+      And I add file for compiling "features/atari/test-apps/test_void_b.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
       And I create and load application
       And I write memory at $80 with $ff
-      And I write memory at t_slot with $04
+      And I write word at t_fn with address _fn_io_unmount_disk_image
+      And I write memory at t_b1 with $04
      When I execute the procedure at _init for no more than 70 instructions
 
     # check the DCB values were set correctly

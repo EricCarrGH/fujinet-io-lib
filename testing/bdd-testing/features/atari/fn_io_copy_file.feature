@@ -6,14 +6,15 @@ Feature: IO library test - fn_io_copy_file
     Given atari-fn-io application test setup
       And I add common atari-io files
       And I add atari src file "fn_io_copy_file.s"
-      And I add file for compiling "features/atari/test-apps/test_fn_io_copy_file.s"
+      And I add file for compiling "features/atari/test-apps/test_void_bbw.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
       And I create and load application
       And I write memory at $80 with $ff
-      And I write memory at t_src with $01
-      And I write memory at t_dst with $02
-      And I write memory at t_spec with $00
-      And I write memory at t_spec+1 with $A0
+      # src, dst, spec
+      And I write memory at t_b1 with $01
+      And I write memory at t_b2 with $02
+      And I write word at t_w3 with hex a000
+      And I write word at t_fn with address _fn_io_copy_file
      When I execute the procedure at _init for no more than 110 instructions
 
     # check the DCB values were set correctly

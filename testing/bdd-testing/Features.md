@@ -35,6 +35,7 @@ $ grep '^ *@.*"' Glue.java | cut -d\" -f2- | sed 's/")$//' | sort
 ^I write encoded string \"([^\"]*)\" to (.*)$
 ^I write string \"([^\"]*)\" as ascii to memory address (.*)$
 ^I write string \"([^\"]*)\" as internal to memory address (.*)$
+^I write word at (.*) with address (.*)$
 ^I write word at (.*) with hex (.*)$
 ^I write word at (.*) with value (.*)$
 ^memory at ([^\\s]*) contains$

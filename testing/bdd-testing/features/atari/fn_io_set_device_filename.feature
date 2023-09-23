@@ -6,15 +6,15 @@ Feature: IO library test - fn_io_set_device_filename
     Given atari-fn-io application test setup
       And I add common atari-io files
       And I add atari src file "fn_io_set_device_filename.s"
-      And I add file for compiling "features/atari/test-apps/test_fn_io_set_device_filename.s"
+      And I add file for compiling "features/atari/test-apps/test_void_bbbw.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
       And I create and load application
       And I write memory at $80 with $00
-      And I write memory at t_dev_slot with <device_slot>
-      And I write memory at t_host_slot with <host_slot>
-      And I write memory at t_mode with <mode>
-      And I write memory at t_buff with lo($a000)
-      And I write memory at t_buff+1 with hi($a000)
+      And I write memory at t_b1 with <mode>
+      And I write memory at t_b2 with <host_slot>
+      And I write memory at t_b3 with <device_slot>
+      And I write word at t_w4 with hex a000
+      And I write word at t_fn with address _fn_io_set_device_filename
 
      When I execute the procedure at _init for no more than 130 instructions
 
