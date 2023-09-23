@@ -31,3 +31,4 @@ Given I add common atari-io files
   # Others for compiling
   And I add atari src file "fn_io_bus.s"
   And I add atari src file "fn_io_copy_cmd_data.s"
+  And I add atari src file "fn_io_error.s"

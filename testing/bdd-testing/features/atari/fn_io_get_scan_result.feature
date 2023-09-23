@@ -6,7 +6,7 @@ Feature: IO library test - fn_io_get_scan_result
     Given atari-fn-io application test setup
       And I add common atari-io files
       And I add atari src file "fn_io_get_scan_result.s"
-      And I add file for compiling "features/atari/test-apps/test_void_bw.s"
+      And I add file for compiling "features/atari/test-apps/test_bw.s"
       And I add file for compiling "features/atari/stubs/bus-ssid-info.s"
       And I create and load application
       And I write memory at t_b1 with 5

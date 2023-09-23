@@ -1,16 +1,14 @@
         .export         _main
-        .export         t_w1, t_w2, t_fn
+        .export         t_w1, t_fn
 
         .import         pushax
 
         .include        "fn_macros.inc"
 
 ; tests a function with signature:
-;    void function(word w1, word w2)
+;    [void|byte|word] function(word b1)
 .proc _main
-        pushax  t_w1
-        setax   t_w2
-
+        setax   t_w1
         jmp     @run
 
 @run:   jmp     (t_fn)
@@ -19,6 +17,5 @@
 
 .bss
 t_w1:   .res 2
-t_w2:   .res 2
 
 t_fn:   .res 2

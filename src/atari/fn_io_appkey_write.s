@@ -1,4 +1,4 @@
-        .export         _fn_io_app_key_write
+        .export         _fn_io_appkey_write
 
         .import         _fn_io_do_bus
         .import         _fn_io_error
@@ -10,12 +10,12 @@
         .include        "fn_data.inc"
         .include        "fn_io.inc"
 
-; void fn_io_app_key_write(uint16_t count, AppKeyWrite *buffer);
+; void fn_io_appkey_write(uint16_t count, AppKeyWrite *buffer);
 ;
-.proc _fn_io_app_key_write
+.proc _fn_io_appkey_write
         axinto  tmp7                    ; save buffer address
 
-        setax   #t_fn_io_write_app_key
+        setax   #t_fn_io_write_appkey
         jsr     fn_io_copy_cmd_data
 
         mwa     tmp7, IO_DCB::dbuflo
@@ -31,5 +31,5 @@
 
 .define AKWsz .sizeof(AppKeyWrite)
 
-t_fn_io_write_app_key:
+t_fn_io_write_appkey:
         .byte $de, $80, AKWsz, 0, $ff, $ff

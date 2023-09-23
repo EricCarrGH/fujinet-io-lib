@@ -6,7 +6,7 @@
         .include        "fn_macros.inc"
 
 ; tests a function with signature:
-;    void function(byte b1, byte b2, byte b3, word w4)
+;    [void|byte|word] function(byte b1, byte b2, byte b3, word w4)
 .proc _main
         pusha   t_b1
         pusha   t_b2

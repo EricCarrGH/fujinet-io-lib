@@ -6,7 +6,7 @@ Feature: IO library test - fn_io_get_ssid
     Given atari-fn-io application test setup
       And I add common atari-io files
       And I add atari src file "fn_io_get_ssid.s"
-      And I add file for compiling "features/atari/test-apps/test_void_w.s"
+      And I add file for compiling "features/atari/test-apps/test_w.s"
       And I add file for compiling "features/atari/stubs/bus-netconfig.s"
       And I create and load application
       And I write word at t_w1 with hex a000

@@ -13,20 +13,21 @@
 ; uint8_t fn_io_base64_decode_length(unsigned long *len);
 ;
 _fn_io_base64_decode_length:
-        popax   tmp7                   ; pointer to len in tmp7/8
+        axinto   tmp7                   ; pointer to len in tmp7/8
         setax   #t_fn_io_base64_decode_length
 
 de_common:
         jsr     fn_io_copy_cmd_data
 
         mwa     tmp7, IO_DCB::dbuflo
+        mva     #$03, IO_DCB::dtimlo
         jsr     _fn_io_do_bus
         jmp     _fn_io_error
 
 ; uint8_t fn_io_base64_encode_length(unsigned long *len);
 ;
 _fn_io_base64_encode_length:
-        popax   tmp7                   ; pointer to len in tmp7/8
+        axinto  tmp7                   ; pointer to len in tmp7/8
         setax   #t_fn_io_base64_encode_length
         jmp     de_common
 

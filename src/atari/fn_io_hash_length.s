@@ -17,6 +17,7 @@
         jsr    fn_io_copy_cmd_data
 
         mva     tmp7, IO_DCB::daux1
+        mva     #$03, IO_DCB::dtimlo
 
         jsr     _fn_io_do_bus
         jmp     _fn_io_error

@@ -6,7 +6,7 @@ Feature: IO library test - fn_io_mount_all
     Given atari-fn-io application test setup
       And I add common atari-io files
       And I add atari src file "fn_io_mount_all.s"
-      And I add file for compiling "features/atari/test-apps/test_void.s"
+      And I add file for compiling "features/atari/test-apps/test_no_args.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
       And I create and load application
       And I write memory at $80 with $ff

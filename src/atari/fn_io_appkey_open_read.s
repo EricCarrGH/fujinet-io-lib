@@ -1,5 +1,5 @@
-        .export         _fn_io_app_key_open
-        .export         _fn_io_app_key_read
+        .export         _fn_io_appkey_open
+        .export         _fn_io_appkey_read
 
         .import         _fn_io_do_bus
         .import         _fn_io_error
@@ -11,11 +11,11 @@
         .include        "fn_data.inc"
         .include        "fn_io.inc"
 
-; void fn_io_app_key_open(AppKeyOpen *buffer);
+; void fn_io_appkey_open(AppKeyOpen *buffer);
 ;
-_fn_io_app_key_open:
+_fn_io_appkey_open:
         axinto  tmp7
-        setax   #t_fn_io_open_app_key
+        setax   #t_fn_io_open_appkey
 
 ak_common:
         jsr     fn_io_copy_cmd_data
@@ -26,11 +26,11 @@ ak_common:
         jmp     _fn_io_error
 
 
-; void fn_io_app_key_read(AppKeyRead *buffer);
+; void fn_io_appkey_read(AppKeyRead *buffer);
 ;
-_fn_io_app_key_read:
+_fn_io_appkey_read:
         axinto  tmp7                    ; buffer location
-        setax   #t_fn_io_read_app_key
+        setax   #t_fn_io_read_appkey
         jmp     ak_common
 
 
@@ -39,8 +39,8 @@ _fn_io_app_key_read:
 .define AKOsz .sizeof(AppKeyOpen)
 .define AKRsz .sizeof(AppKeyRead)
 
-t_fn_io_open_app_key:
+t_fn_io_open_appkey:
         .byte $dc, $40, AKOsz, 0, 0, 0
 
-t_fn_io_read_app_key:
+t_fn_io_read_appkey:
         .byte $dd, $40, AKRsz, 0, 0, 0
