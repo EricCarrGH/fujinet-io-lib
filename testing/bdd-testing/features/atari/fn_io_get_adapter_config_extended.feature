@@ -8,7 +8,7 @@ Feature: IO library test - fn_io_get_adapter_config
       And I add atari src file "fn_io_get_adapter_config_extended.s"
       And I add atari src file "fn_io_get_adapter_config.s"
       And I add file for compiling "features/atari/stubs/bus-adapter-config-ext.s"
-      And I create and load simple application
+      And I create and load simple atari application
       And I set register A to $00
       And I set register X to $A0
       And I write memory at $80 with $00

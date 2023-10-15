@@ -8,7 +8,7 @@ Feature: IO library test - fn_io_set_hsio_index
       And I add atari src file "fn_io_set_hsio_index.s"
       And I add file for compiling "features/atari/test-apps/test_bb.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load atari application
       And I write memory at $80 with $ff
       And I write memory at t_b1 with $33
       And I write memory at t_b2 with $66

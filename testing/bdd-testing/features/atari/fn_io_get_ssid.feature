@@ -8,7 +8,7 @@ Feature: IO library test - fn_io_get_ssid
       And I add atari src file "fn_io_get_ssid.s"
       And I add file for compiling "features/atari/test-apps/test_w.s"
       And I add file for compiling "features/atari/stubs/bus-netconfig.s"
-      And I create and load application
+      And I create and load atari application
       And I write word at t_w1 with hex a000
       And I write word at t_fn with address _fn_io_get_ssid
       # And I print memory from BUS to BUS+192

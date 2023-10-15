@@ -10,6 +10,12 @@ $ grep '^ *@.*"' TestGlue/*.kt | cut -d\" -f2- | sed 's/")$//' | sort
 $ grep '^ *@.*"' Glue.java | cut -d\" -f2- | sed 's/")$//' | sort
 ```
 
+## Useful feature lines
+
+```feature
+And ignore address _bzero to _bzero+93 for trace
+```
+
 ## Custom Given/When/Then
 
 ```text
@@ -18,8 +24,11 @@ $ grep '^ *@.*"' Glue.java | cut -d\" -f2- | sed 's/")$//' | sort
 ^I add file for compiling \"([^\"]*)\"$
 ^I convert registers (.*) to address$
 ^I convert vice-labels file \"([^\"]*)\" to acme labels file \"([^\"]*)\"$
-^I create and load application$
-^I create and load simple application$
+^I create and load apple-single application$
+^I create and load apple-single application using crt-file "([^"]*)"$
+^I create and load atari application$
+^I create and load atari application using crt-file "([^"]*)"$
+^I create and load simple atari application$
 ^I create or clear directory \"([^\"]*)\"$
 ^I expect register state (.*)$
 ^I fill memory from (.*) to (.*) with (.*)$

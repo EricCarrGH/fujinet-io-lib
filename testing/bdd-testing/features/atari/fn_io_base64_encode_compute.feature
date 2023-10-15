@@ -8,10 +8,10 @@ Feature: IO library test - fn_io_base64_encode_compute
       And I add atari src file "fn_io_base64_xxcode_compute.s"
       And I add file for compiling "features/atari/test-apps/test_no_args.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load atari application
       And I write memory at $80 with $ff
       And I write word at t_fn with address _fn_io_base64_encode_compute
-     When I execute the procedure at _init for no more than 75 instructions
+     When I execute the procedure at _init for no more than 85 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

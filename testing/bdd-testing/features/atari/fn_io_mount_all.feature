@@ -8,7 +8,7 @@ Feature: IO library test - fn_io_mount_all
       And I add atari src file "fn_io_mount_all.s"
       And I add file for compiling "features/atari/test-apps/test_no_args.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load atari application
       And I write memory at $80 with $ff
       And I write word at t_fn with address _fn_io_mount_all
      When I execute the procedure at _init for no more than 70 instructions

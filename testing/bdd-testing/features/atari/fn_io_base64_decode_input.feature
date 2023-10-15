@@ -9,7 +9,7 @@ Feature: IO library test - fn_io_base64_decode_input
       And I add atari src file "fn_io_crypto_common.s"
       And I add file for compiling "features/atari/test-apps/test_ww.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load atari application
       And I write memory at $80 with $ff
       And I write word at t_w1 with hex a012
       And I write word at t_w2 with hex 3456

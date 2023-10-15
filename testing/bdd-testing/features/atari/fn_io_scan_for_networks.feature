@@ -7,7 +7,7 @@ Feature: IO library test - fn_io_scan_for_networks
       And I add common atari-io files
       And I add atari src file "fn_io_scan_for_networks.s"
       And I add file for compiling "features/atari/stubs/bus-dbuflo1.s"
-      And I create and load simple application
+      And I create and load simple atari application
       And I write memory at $80 with $00
 
      When I set register A to $aa

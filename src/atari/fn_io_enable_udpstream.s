@@ -25,4 +25,4 @@
 
 .rodata
 t_fn_io_enable_udpstream:
-        .byte $fb, $80, 64, 0, $ff, $ff
+        .byte $f0, $80, 64, 0, $ff, $ff

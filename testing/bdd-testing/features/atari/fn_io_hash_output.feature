@@ -8,7 +8,7 @@ Feature: IO library test - fn_io_hash_output
       And I add atari src file "fn_io_hash_output.s"
       And I add file for compiling "features/atari/test-apps/test_bww.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load atari application
       And I write memory at $80 with $ff
       And I write memory at t_b1 with $02
       And I write word at t_w2 with hex 1234

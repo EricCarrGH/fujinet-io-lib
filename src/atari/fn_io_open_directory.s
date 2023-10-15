@@ -8,7 +8,7 @@
         .include    "fn_macros.inc"
         .include    "fn_data.inc"
 
-; int _fn_io_open_directory(uint8_t host_slot, char *path_filter)
+; int fn_io_open_directory(uint8_t host_slot, char *path_filter)
 ;
 ; returns the error status, 0 for no error, 1 for error
 .proc _fn_io_open_directory

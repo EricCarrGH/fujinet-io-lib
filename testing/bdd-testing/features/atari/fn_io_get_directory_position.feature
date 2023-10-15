@@ -8,7 +8,7 @@ Feature: IO library test - fn_io_get_directory_position
       And I add atari src file "fn_io_get_directory_position.s"
       And I add file for compiling "features/atari/test-apps/test_no_args.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load atari application
       And I write memory at $80 with $ff
       And I write word at $86 with hex 1234
       And I write word at t_fn with address _fn_io_get_directory_position

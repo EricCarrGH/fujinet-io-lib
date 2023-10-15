@@ -8,12 +8,12 @@ Feature: IO library test - fn_io_appkey_write
       And I add atari src file "fn_io_appkey_write.s"
       And I add file for compiling "features/atari/test-apps/test_ww.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load atari application
       And I write memory at $80 with $ff
       And I write word at t_w1 with hex f00d
       And I write word at t_w2 with hex a000
       And I write word at t_fn with address _fn_io_appkey_write
-     When I execute the procedure at _init for no more than 110 instructions
+     When I execute the procedure at _init for no more than 120 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

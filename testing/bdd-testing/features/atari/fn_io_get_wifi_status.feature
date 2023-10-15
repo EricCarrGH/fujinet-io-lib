@@ -7,7 +7,7 @@ Feature: IO library test - fn_io_get_wifi_status
       And I add common atari-io files
       And I add atari src file "fn_io_get_wifi_status.s"
       And I add file for compiling "features/atari/stubs/bus-dbuflo1.s"
-      And I create and load simple application
+      And I create and load simple atari application
 
     When I write memory at t_v with <sio_ret>
      And I execute the procedure at _fn_io_get_wifi_status for no more than 65 instructions

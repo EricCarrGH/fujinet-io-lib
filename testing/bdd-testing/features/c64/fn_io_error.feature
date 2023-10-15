@@ -5,7 +5,7 @@ Feature: IO library test - fn_io_error
   Scenario Outline: execute fn_io_error for c64 always returns false
     Given c64-fn-io simple test setup
       And I add c64 src file "fn_io_error.c"
-      And I create and load simple application
+      And I create and load simple atari application
 
      When I execute the procedure at _fn_io_error for no more than 5 instructions
      Then I expect register A equal <A>

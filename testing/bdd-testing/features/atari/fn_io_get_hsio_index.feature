@@ -8,7 +8,7 @@ Feature: IO library test - fn_io_get_hsio_index
       And I add atari src file "fn_io_get_hsio_index.s"
       And I add file for compiling "features/atari/test-apps/test_no_args.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load atari application
       And I write memory at $80 with $ff
       # code will only use tmp7, just proving that tmp7+1 doesn't affect result here, by setting tmp7 and tmp7+1
       And I write word at $86 with hex 1234

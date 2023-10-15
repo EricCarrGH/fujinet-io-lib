@@ -6,7 +6,7 @@
         .include        "fn_io.inc"
         .include        "fn_data.inc"
 
-; void  fn_io_set_ssid(void *fn_io_net_config)
+; void  fn_io_set_ssid(NetConfig *fn_io_net_config)
 ; sends the ssid to bus.
 .proc _fn_io_set_ssid
         axinto  tmp7

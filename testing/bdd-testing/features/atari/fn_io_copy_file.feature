@@ -8,14 +8,14 @@ Feature: IO library test - fn_io_copy_file
       And I add atari src file "fn_io_copy_file.s"
       And I add file for compiling "features/atari/test-apps/test_bbw.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load atari application
       And I write memory at $80 with $ff
       # src, dst, spec
       And I write memory at t_b1 with $01
       And I write memory at t_b2 with $02
       And I write word at t_w3 with hex a000
       And I write word at t_fn with address _fn_io_copy_file
-     When I execute the procedure at _init for no more than 110 instructions
+     When I execute the procedure at _init for no more than 120 instructions
 
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70

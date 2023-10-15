@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+## [1.1.2] - 2023-10-15
+
+### Changed
+
+- Removed BDD6502 classes and use shared version, updated tests for new names
+- Updated Features.md for new supported feature functions
+
+### Fixed
+
+- Fix fn_io_enable_udpstream dcomnd
+
 ## [1.1.1] - 2023-09-23
 
 ### Added

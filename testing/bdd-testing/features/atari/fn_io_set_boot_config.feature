@@ -8,7 +8,7 @@ Feature: IO library test - fn_io_set_boot_config
       And I add atari src file "fn_io_set_boot_config.s"
       And I add file for compiling "features/atari/test-apps/test_b.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load atari application
       And I write memory at $80 with $ff
       And I write memory at t_b1 with $0a
       And I write word at t_fn with address _fn_io_set_boot_config

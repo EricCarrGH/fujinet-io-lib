@@ -274,11 +274,11 @@ SRC_INC_DIRS := \
   $(sort $(dir $(wildcard $(SRCDIR)/$(TARGETLIST)/*))) \
   $(sort $(dir $(wildcard $(SRCDIR)/common/*)))
 
-# $(info $$SOURCES = ${SOURCES})
-# $(info $$OBJECTS = ${OBJECTS})
+$(info $$SOURCES = ${SOURCES})
+$(info $$OBJECTS = ${OBJECTS})
 # $(info $$SRC_INC_DIRS = ${SRC_INC_DIRS})
 # $(info $$ASFLAGS = ${ASFLAGS})
-# $(info $$TARGETOBJDIR = ${TARGETOBJDIR})
+$(info $$TARGETOBJDIR = ${TARGETOBJDIR})
 
 vpath %.c $(SRC_INC_DIRS) $(SRCDIR)
 

@@ -8,7 +8,7 @@ Feature: IO library test - fn_io_enable_udpstream
       And I add atari src file "fn_io_enable_udpstream.s"
       And I add file for compiling "features/atari/test-apps/test_ww.s"
       And I add file for compiling "features/atari/stubs/bus-simple.s"
-      And I create and load application
+      And I create and load atari application
       And I write memory at $80 with $ff
       And I write word at t_w1 with hex 1234
       And I write word at t_w2 with hex a000
@@ -18,7 +18,7 @@ Feature: IO library test - fn_io_enable_udpstream
     # check the DCB values were set correctly
     Then I expect to see DDEVIC equal $70
      And I expect to see DUNIT equal $01
-     And I expect to see DCOMND equal $fb
+     And I expect to see DCOMND equal $f0
      And I expect to see DSTATS equal $80
      And I expect to see DBUFLO equal lo($a000)
      And I expect to see DBUFHI equal hi($a000)
